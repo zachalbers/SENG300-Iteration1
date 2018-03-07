@@ -33,8 +33,7 @@ public class TypeFinder {
 			cu.accept(new ASTVisitor() {
 	 
 				Set names = new HashSet();
-				String x = "aafdasf";
-				String y = "aafdasf";
+
 	 
 				public boolean visit(SimpleName node) {
 					String name = node.getFullyQualifiedName();
