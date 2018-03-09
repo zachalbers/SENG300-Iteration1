@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -18,13 +19,22 @@ import org.eclipse.jdt.core.dom.*;
 public class TypeFinder {
 	  public static void main(String[] args) throws IOException {
 
-	    parse(readFileToString("/Users/zachalbers/Project/test.java"));
+	    parse(readFileToString("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles/test.java"));
 	  }
 
 	  public static void parse(String str) {
+		  
+		  Map options = JavaCore.getOptions();
+		  options.put(JavaCore.COMPILER_COMPLIANCE, JavaCore.VERSION_1_5);
+		  options.put(JavaCore.COMPILER_CODEGEN_TARGET_PLATFORM, JavaCore.VERSION_1_5);
+		  options.put(JavaCore.COMPILER_SOURCE, JavaCore.VERSION_1_5);
+
+
+		  
+		  
 			ASTParser parser = ASTParser.newParser(AST.JLS3);
+			parser.setCompilerOptions(options);
 			parser.setSource(str.toCharArray());
-			//parser.setSource("/*abc*/".toCharArray());
 			parser.setKind(ASTParser.K_COMPILATION_UNIT);
 			parser.setResolveBindings(true);
 	 
@@ -34,14 +44,32 @@ public class TypeFinder {
 	 
 				Set names = new HashSet();
 
-	 
-				public boolean visit(SimpleName node) {
-					String name = node.getFullyQualifiedName();
-					//this.names.add(name.getIdentifier());
-					System.out.println("Declaration of '" + name + "'");
+
+				
+				public boolean visit(AnnotationTypeDeclaration node) {
+					String name = node.getName().getFullyQualifiedName();
+					System.out.println(name);
 
 					return false; // do not continue 
 				}
+				
+
+				
+				public boolean visit(TypeDeclaration node) {
+					String name = node.getName().getFullyQualifiedName();
+					System.out.println(name);
+
+					return super.visit(node); // do not continue 
+				}
+				
+				public boolean visit(VariableDeclarationFragment node) {
+					String name = node.getName().getFullyQualifiedName();
+					System.out.println(name);
+
+					return false;// do not continue 
+				}
+				
+
 	 
 //				public boolean visit(SimpleName node) {
 //					if (this.names.contains(node.getIdentifier())) {
