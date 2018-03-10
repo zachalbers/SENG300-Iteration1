@@ -33,6 +33,9 @@ public class TypeFinder {
 		}*/
 
 	  }
+	  
+	  
+
 
 	  public static void parse(String str) {
 		  
@@ -43,18 +46,15 @@ public class TypeFinder {
 
 
 		  
-		  
-		  
+  
 		  
 			ASTParser parser = ASTParser.newParser(AST.JLS3);
 			parser.setCompilerOptions(options);
 			parser.setSource(str.toCharArray());
 			parser.setKind(ASTParser.K_COMPILATION_UNIT);
 			parser.setResolveBindings(true);
-			
-
 			parser.setEnvironment(null, null, null, true);
-			parser.setUnitName("test.java");
+			parser.setUnitName("doesThisMatter.java");
 			
 
 			
