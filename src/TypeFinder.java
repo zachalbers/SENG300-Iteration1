@@ -16,8 +16,16 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	  public static void main(String[] args) throws IOException {
-
-	    parse(readFileToString("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles/test.java"));
+		 /*
+		if (args.length == 2 ) {
+		  	String directory = args[0];	
+			String javaType= args[1];	//Need to use to count which java type you want
+			parse(readFileToString(directory));
+		}
+		else {
+			System.out.println("Please provide directory and java type");
+		}*/
+		  parse(readFileToString("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles/test.java"));
 	  }
 
 	  public static void parse(String str) {
