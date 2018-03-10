@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.HashSet;
@@ -17,7 +18,8 @@ import org.eclipse.jdt.core.dom.*;
 public class TypeFinder {
 	  public static void main(String[] args) throws IOException {
 
-	    parse(readFileToString("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles/test.java"));
+
+	    parseDirectory("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles");
 	  }
 
 	  public static void parse(String str) {
@@ -99,6 +101,21 @@ public class TypeFinder {
 					return false; // do not continue 
 				}
 				
+				
+				public boolean visit(EnumDeclaration node) {
+					String name = node.getName().getFullyQualifiedName();
+					System.out.println("Declaration: " + name);
+					
+					ITypeBinding e = node.resolveBinding();
+					
+					if (e.getInterfaces() != null) {
+						ITypeBinding[] interfaces = e.getInterfaces();
+						for (ITypeBinding i : interfaces) System.out.println("implements Reference: " + i.getName());
+					}
+					
+					return false; // do not continue 
+				}
+				
 
 
 			});
@@ -122,10 +139,21 @@ public class TypeFinder {
 			reader.close();
 	 
 			return  fileData.toString(); 
-	  
-	  
-  
+	 
 	}
+	  
+	  public static void parseDirectory(String filePath) throws IOException {
+		  File directory = new File(filePath);
+		  
+		  File[] files = directory.listFiles();
+		  
+		  for (File i: files) {
+			  String currentFilePath = i.getAbsolutePath();
+			  if (i.isFile()) parse(readFileToString(currentFilePath));
+		  }
+		  
+		  
+	  }
 	  
 	  
 }

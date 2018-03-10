@@ -2,12 +2,17 @@
 
 
 
-// public enum Day {
-//     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-//     THURSDAY, FRIDAY, SATURDAY
-// }
-//
-//
+public interface MyInterface{
+
+}
+
+
+public enum Day implements MyInterface{
+    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    THURSDAY, FRIDAY, SATURDAY
+}
+
+
 @interface SomeAnnotation {
    String author();
    String date();
@@ -29,6 +34,8 @@ class Person implements SomeAnnotation{
 		String string1 = "Hello";
 
 		String string2 = "World";
+
+        int x = 5;
 
 
 
@@ -62,9 +69,6 @@ class Person implements SomeAnnotation{
 //
 // }
 
-// public interface MyInterface{
-//
-// }
 
 
 
