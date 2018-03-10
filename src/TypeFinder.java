@@ -17,11 +17,11 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	  public static void main(String[] args) throws IOException {
-<<<<<<< HEAD
+
 
 
 	    parseDirectory("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles");
-=======
+
 		 /*
 		if (args.length == 2 ) {
 		  	String directory = args[0];	
@@ -31,8 +31,7 @@ public class TypeFinder {
 		else {
 			System.out.println("Please provide directory and java type");
 		}*/
-		  parse(readFileToString("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles/test.java"));
->>>>>>> 2435093ce995ac804607d106a1c3d58047b965d1
+
 	  }
 
 	  public static void parse(String str) {
