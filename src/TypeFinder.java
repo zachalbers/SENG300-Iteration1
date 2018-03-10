@@ -54,7 +54,7 @@ public class TypeFinder {
 
 				public boolean visit(TypeDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
-					System.out.println(name);
+					System.out.println("Declaration: " +name);
 					
 					System.out.println("This class extends " + node.getSuperclassType());
 					
@@ -62,7 +62,7 @@ public class TypeFinder {
 					
 					if (e.getInterfaces() != null) {
 						ITypeBinding[] interfaces = e.getInterfaces();
-						for (ITypeBinding i : interfaces) System.out.println("This is " + i.getName());
+						for (ITypeBinding i : interfaces) System.out.println("implements Reference: " + i.getName());
 					}
 					
 
@@ -74,7 +74,7 @@ public class TypeFinder {
 				
 				public boolean visit(VariableDeclarationFragment node) {
 					String name = node.getName().getFullyQualifiedName();
-					System.out.println(name);
+					System.out.println("Reference: " + name);
 					
 
 					return super.visit(node);
@@ -83,7 +83,9 @@ public class TypeFinder {
 		
 				public boolean visit(ClassInstanceCreation node) {
 					Type name = node.getType();
-					System.out.println(name);
+					System.out.println("Reference: " + name);
+					
+
 
 					return false; // do not continue 
 			}
@@ -92,8 +94,8 @@ public class TypeFinder {
 				
 				public boolean visit(AnnotationTypeDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
-					System.out.println(name);
-
+					System.out.println("Declaration: " + name);
+					
 					return false; // do not continue 
 				}
 				
