@@ -7,12 +7,6 @@ import java.util.Set;
 
 
 import org.eclipse.jdt.core.JavaCore;
-import org.eclipse.jdt.core.dom.AST;
-import org.eclipse.jdt.core.dom.ASTParser;
-import org.eclipse.jdt.core.dom.ASTVisitor;
-import org.eclipse.jdt.core.dom.CompilationUnit;
-import org.eclipse.jdt.core.dom.SimpleName;
-import org.eclipse.jdt.core.dom.VariableDeclarationFragment;
 import org.eclipse.jdt.core.dom.*;
 
 
@@ -42,19 +36,7 @@ public class TypeFinder {
 	 
 			cu.accept(new ASTVisitor() {
 	 
-				Set names = new HashSet();
 
-
-				
-				public boolean visit(AnnotationTypeDeclaration node) {
-					String name = node.getName().getFullyQualifiedName();
-					System.out.println(name);
-
-					return false; // do not continue 
-				}
-				
-
-				
 				public boolean visit(TypeDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
 					System.out.println(name);
@@ -65,20 +47,30 @@ public class TypeFinder {
 				public boolean visit(VariableDeclarationFragment node) {
 					String name = node.getName().getFullyQualifiedName();
 					System.out.println(name);
+					
 
-					return false;// do not continue 
+					return super.visit(node);// do not continue 
+				}
+				
+		
+				public boolean visit(ClassInstanceCreation node) {
+				Type name = node.getType();
+				System.out.println(name);
+
+				return false; // do not continue 
+			}
+				
+				
+				
+				public boolean visit(AnnotationTypeDeclaration node) {
+					String name = node.getName().getFullyQualifiedName();
+					System.out.println(name);
+
+					return false; // do not continue 
 				}
 				
 
-	 
-//				public boolean visit(SimpleName node) {
-//					if (this.names.contains(node.getIdentifier())) {
-//						System.out.println("Usage of '" + node + "' at line "
-//								+ cu.getLineNumber(node.getStartPosition()));
-//					}
-//					return true;
 
-//				}
 			});
 	 
 		}
