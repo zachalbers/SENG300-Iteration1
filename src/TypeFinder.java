@@ -5,7 +5,11 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.*;
 
@@ -26,12 +30,23 @@ public class TypeFinder {
 
 		  
 		  
+		  
+		  
 			ASTParser parser = ASTParser.newParser(AST.JLS3);
 			parser.setCompilerOptions(options);
 			parser.setSource(str.toCharArray());
 			parser.setKind(ASTParser.K_COMPILATION_UNIT);
 			parser.setResolveBindings(true);
-	 
+			
+
+			parser.setEnvironment(null, null, null, true);
+			parser.setUnitName("test.java");
+			
+
+			
+			
+			 
+			 
 			final CompilationUnit cu = (CompilationUnit) parser.createAST(null);
 	 
 			cu.accept(new ASTVisitor() {
@@ -40,24 +55,37 @@ public class TypeFinder {
 				public boolean visit(TypeDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
 					System.out.println(name);
+					
+					System.out.println("This class extends " + node.getSuperclassType());
+					
+					ITypeBinding e = node.resolveBinding();
+					
+					if (e.getInterfaces() != null) {
+						ITypeBinding[] interfaces = e.getInterfaces();
+						for (ITypeBinding i : interfaces) System.out.println("This is " + i.getName());
+					}
+					
 
-					return super.visit(node); // do not continue 
+					return super.visit(node); 
 				}
+				
+
+				
 				
 				public boolean visit(VariableDeclarationFragment node) {
 					String name = node.getName().getFullyQualifiedName();
 					System.out.println(name);
 					
 
-					return super.visit(node);// do not continue 
+					return super.visit(node);
 				}
 				
 		
 				public boolean visit(ClassInstanceCreation node) {
-				Type name = node.getType();
-				System.out.println(name);
+					Type name = node.getType();
+					System.out.println(name);
 
-				return false; // do not continue 
+					return false; // do not continue 
 			}
 				
 				

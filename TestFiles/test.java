@@ -1,5 +1,5 @@
 
-import java.util.Set;
+
 
 
 // public enum Day {
@@ -13,22 +13,28 @@ import java.util.Set;
    String date();
 
 }
+//
+// @interface SomeAnnotation2 extends SomeAnnotation {
+//     String author2();
+//     String date2();
+//
+// }
 
 
-public class Person implements SomeAnnotation{
+class Person implements SomeAnnotation{
 
 
-	public static void main(String[] args) {
+	// public static void main(String[] args) {
+    //
+	// 	String string1 = "Hello";
+    //
+	// 	String string2 = "World";
 
-		String string1 = "Hello";
-
-		String string2 = "World";
 
 
-
-		Person person1 = new Person(string1);
-
-        Person person2 = new Person();
+		// Person person1 = new Person(string1);
+        //
+        // Person person2 = new Person();
 
 
 
@@ -47,15 +53,15 @@ public class Person implements SomeAnnotation{
 //
 // }
 //
-// public class Vehicle {
+// class Vehicle {
 //
 //
-// 	public void method2() {
-// 		Person person2 = new Person();
-// 	}
+// 	// public void method2() {
+// 	// 	Person person2 = new Person();
+// 	//}
 //
 // }
-//
+
 // public interface MyInterface{
 //
 // }
