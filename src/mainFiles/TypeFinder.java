@@ -26,7 +26,7 @@ public class TypeFinder {
 	
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
-	  boolean DEBUG = false;
+	  boolean DEBUG = true;
 	  String javaType = "";
 	  String directory = "";
 	  public String outputString;
@@ -150,6 +150,7 @@ public class TypeFinder {
 					if (bind.getKind() == IBinding.VARIABLE) {
 						IVariableBinding ivb = (IVariableBinding) bind;
 						if (ivb.isParameter()) {
+							referenceCount ++;
 							if (DEBUG) System.out.println("Parameter: " + name);
 						}
 					}
@@ -158,6 +159,7 @@ public class TypeFinder {
 					
 					return super.visit(node);
 				}
+				
 				
 		
 				public boolean visit(ClassInstanceCreation node) {
