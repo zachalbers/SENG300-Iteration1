@@ -19,11 +19,24 @@ import org.eclipse.jdt.core.dom.*;
 
 
 public class TypeFinder {
+	
+	
+	  public static int  referenceCount = 0;
+	  public static int  declerationCount = 0;
+	  public static String javaType;
+	  
+	  
 	  public static void main(String[] args) throws IOException {
+		  
+		  javaType = "MyInterface";
 
 
-
-	    parseDirectory("/home/andrew/Projects/SENG300-Iteration1/TestFiles");
+		parseDirectory("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles");
+		
+		
+		System.out.println(javaType + ". Declarations found: " + declerationCount + "; references found: " + referenceCount + ".");
+	    
+		//parseDirectory("/home/andrew/Projects/SENG300-Iteration1/TestFiles");
 
 		 /*
 		if (args.length == 2 ) {
@@ -70,9 +83,23 @@ public class TypeFinder {
 	 
 
 				public boolean visit(TypeDeclaration node) {
+					if (javaType.equals(node.getName().getFullyQualifiedName())) declerationCount++;
+					
+					if (node.getSuperclassType() != null) {
+						if (javaType.equals(node.getSuperclassType().toString())) referenceCount++;
+					}
+					
+					ITypeBinding nodeBinding = node.resolveBinding();
+					if (nodeBinding.getInterfaces() != null) {
+						ITypeBinding[] interfaces = nodeBinding.getInterfaces();
+						for (ITypeBinding i : interfaces) if (javaType.equals(i.getQualifiedName())) referenceCount++;
+
+					}
+					
+					
+					// Printing out full data
 					String name = node.getName().getFullyQualifiedName();
 					System.out.println("Declaration: " +name);
-					
 					System.out.println("This class extends " + node.getSuperclassType());
 					
 					ITypeBinding e = node.resolveBinding();
@@ -90,6 +117,11 @@ public class TypeFinder {
 				
 				
 				public boolean visit(VariableDeclarationFragment node) {
+					
+					
+					
+					
+					
 					String name = node.getName().getFullyQualifiedName();
 					System.out.println("Reference: " + name);
 					
