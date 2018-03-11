@@ -26,6 +26,7 @@ public class TypeFinder {
 	
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
+	  boolean DEBUG = false;
 	  String javaType = "";
 	  String directory = "";
 	  public String outputString;
@@ -102,33 +103,29 @@ public class TypeFinder {
 	 
 
 				public boolean visit(TypeDeclaration node) {
-					if (javaType.equals(node.getName().getFullyQualifiedName())) declerationCount++;
+					String name = node.getName().getFullyQualifiedName();
+					
+					if (javaType.equals(name)) declerationCount++;
+					if (DEBUG) System.out.println("Declaration: " +name);
+			
+					
 					
 					if (node.getSuperclassType() != null) {
 						if (javaType.equals(node.getSuperclassType().toString())) referenceCount++;
+						if (DEBUG) System.out.println("This class extends " + node.getSuperclassType());
+						
 					}
 					
 					ITypeBinding nodeBinding = node.resolveBinding();
 					if (nodeBinding.getInterfaces() != null) {
 						ITypeBinding[] interfaces = nodeBinding.getInterfaces();
-						for (ITypeBinding i : interfaces) if (javaType.equals(i.getQualifiedName())) referenceCount++;
-
+						for (ITypeBinding i : interfaces) {
+							if (javaType.equals(i.getQualifiedName())) referenceCount++;
+							if (DEBUG) System.out.println("implements Reference: " + i.getName());
+							
+						}
 					}
 					
-					
-					// Printing out full data
-					String name = node.getName().getFullyQualifiedName();
-					System.out.println("Declaration: " +name);
-					System.out.println("This class extends " + node.getSuperclassType());
-					
-					ITypeBinding e = node.resolveBinding();
-					
-					if (e.getInterfaces() != null) {
-						ITypeBinding[] interfaces = e.getInterfaces();
-						for (ITypeBinding i : interfaces) System.out.println("implements Reference: " + i.getName());
-					}
-					
-
 					return super.visit(node); 
 				}
 				
@@ -137,15 +134,10 @@ public class TypeFinder {
 				
 				public boolean visit(VariableDeclarationFragment node) {
 					
-					String name = null;
-
-					
-					name = node.resolveBinding().getType().getName();
+					String name = node.resolveBinding().getType().getName();
 					if (javaType.equals(name)) referenceCount++;
 
-					
-		            // Printing out full data
-					System.out.println("Variable Reference: " + name);
+					if (DEBUG) System.out.println("Variable Reference: " + name);
 
 
 					return super.visit(node);
@@ -158,7 +150,7 @@ public class TypeFinder {
 					if (bind.getKind() == IBinding.VARIABLE) {
 						IVariableBinding ivb = (IVariableBinding) bind;
 						if (ivb.isParameter()) {
-						System.out.println("Parameter: " + name);
+							if (DEBUG) System.out.println("Parameter: " + name);
 						}
 					}
 					boolean isDecl = node.isDeclaration();
@@ -172,11 +164,8 @@ public class TypeFinder {
 					String name = node.getType().toString();
 					if (javaType.equals(name)) referenceCount++;
 					
-					// Printing out full data
-					System.out.println("Reference: " + name);
-					
-					
-					
+					if (DEBUG) System.out.println("Reference: " + name);
+	
 					return false; // do not continue 
 			}
 				
@@ -187,9 +176,7 @@ public class TypeFinder {
 					String name = node.getName().getFullyQualifiedName();
 					if (javaType.equals(name)) declerationCount++;
 					
-					
-					// Printing out full data
-					System.out.println("Declaration: " + name);
+					if (DEBUG) System.out.println("Declaration: " + name);
 					
 					return false; // do not continue 
 				}
@@ -198,33 +185,30 @@ public class TypeFinder {
 				public boolean visit(EnumDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
 					if (javaType.equals(name)) declerationCount++;
+					if (DEBUG) System.out.println("Declaration: " + name);
+					
 					ITypeBinding e = node.resolveBinding();
 					if (e.getInterfaces() != null) {
 						ITypeBinding[] interfaces = e.getInterfaces();
-						for (ITypeBinding i : interfaces) if (javaType.equals(i.getQualifiedName())) referenceCount++;
+						for (ITypeBinding i : interfaces) {
+							if (javaType.equals(i.getQualifiedName())) referenceCount++;
+							if (DEBUG) System.out.println("Implements Reference: " + i.getName());
+						}
 					}
 					
-					// Printing out full data
-					System.out.println("Declaration: " + name);
-					if (e.getInterfaces() != null) {
-						ITypeBinding[] interfaces = e.getInterfaces();
-						for (ITypeBinding i : interfaces) System.out.println("implements Reference: " + i.getName());
-					}
+
 					
 					return false; // do not continue 
 				}
-				
-				
-
-		        
-
-			
 				
 
 
 			});
 	 
 		}
+	  
+	  
+	  
 	  
 	  
 	  public String readFileToString(String filePath) throws IOException {

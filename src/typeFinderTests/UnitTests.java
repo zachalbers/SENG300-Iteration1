@@ -46,7 +46,7 @@ class UnitTests {
 	
 	
 	/**
-	 * Tests for the correct output when given files with comments containing declarations and references.
+	 * Tests for the correct output when given an enum with declarations and references.
 	 */
 	@Test
 	void testEnum() {
@@ -55,18 +55,32 @@ class UnitTests {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		//assertEquals(finder.outputString, "String. Declarations found: 0; references found: 1.");
+		assertEquals(finder.outputString, "Day. Declarations found: 1; references found: 2.");
 		
 	}	
+	
+	/**
+	 * Tests for the correct output when given a class with declarations and references.
+	 */
+	@Test
+	void testClasses() {
+		String[] args = {BASEDIR + "/TestFiles/testDir3", "Vehicle"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		//assertEquals(finder.outputString, "Day. Declarations found: 1; references found: 2.");
+		
+	}
 	
 	
 	
 	/*
-	 * Test enumerations
+	 * Test enumerations 						x
 	 * Test classes
 	 * Test variables
 	 * Test incorrect directory (unusable)
-	 * Test 
+	 * Test multiple files
 	 * 
 	 * 
 	 *
