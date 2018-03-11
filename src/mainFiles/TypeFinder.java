@@ -138,16 +138,15 @@ public class TypeFinder {
 				public boolean visit(VariableDeclarationFragment node) {
 					
 					String name = null;
-		            if(node.getParent() instanceof FieldDeclaration){
-		                FieldDeclaration declaration = ((FieldDeclaration) node.getParent());
-		                name = declaration.getType().toString();
-		                if (javaType.equals(name)) referenceCount++;
 
-		            }
+					
+					name = node.resolveBinding().getType().getName();
+					if (javaType.equals(name)) referenceCount++;
+
 					
 		            // Printing out full data
-					System.out.println("Reference: " + name);
-					
+					System.out.println("Variable Reference: " + name);
+
 
 					return super.visit(node);
 				}
@@ -214,6 +213,12 @@ public class TypeFinder {
 					
 					return false; // do not continue 
 				}
+				
+				
+
+		        
+
+			
 				
 
 

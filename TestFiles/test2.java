@@ -1,21 +1,18 @@
-public interface MyInterface{
-
-}
-
-public enum Day implements MyInterface{
-    SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-    THURSDAY, FRIDAY, SATURDAY
-}
 
 
-@interface SomeAnnotation {
-   String author();
-   String date();
 
-}
 
-@interface SomeAnnotation2 {
-    String author2();
-    String date2();
+
+class Person {
+
+    // public enum Day{
+    //     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+    //     THURSDAY, FRIDAY, SATURDAY
+    // }
+
+    public void method1() {
+
+        String abc = "123";
+    }
 
 }

@@ -32,10 +32,10 @@ class UnitTests {
 
 	
 	/**
-	 * Tests for the correct output when given an empty file.
+	 * Tests for the correct output when given files with comments containing declarations and references.
 	 */
 	@Test
-	void testEmptyFile2() {
+	void testComments() {
 		String[] args = {BASEDIR + "/TestFiles/testDir2", "String"};
 
 		TypeFinder finder = new TypeFinder();
@@ -45,11 +45,34 @@ class UnitTests {
 	}
 	
 	
+	/**
+	 * Tests for the correct output when given files with comments containing declarations and references.
+	 */
+	@Test
+	void testEnum() {
+		String[] args = {BASEDIR + "/TestFiles/testDir3", "Day"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		//assertEquals(finder.outputString, "String. Declarations found: 0; references found: 1.");
+		
+	}	
 	
 	
 	
-	
-	
+	/*
+	 * Test enumerations
+	 * Test classes
+	 * Test variables
+	 * Test incorrect directory (unusable)
+	 * Test 
+	 * 
+	 * 
+	 *
+	 * 
+	 * 
+	 */
 	
 	
 }
