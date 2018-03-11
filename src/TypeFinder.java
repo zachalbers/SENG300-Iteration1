@@ -1,3 +1,4 @@
+import java.util.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -5,6 +6,8 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import javax.swing.ListCellRenderer;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IWorkspaceRoot;
@@ -20,7 +23,7 @@ public class TypeFinder {
 
 
 
-	    parseDirectory("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles");
+	    parseDirectory("/home/andrew/Projects/SENG300-Iteration1/TestFiles");
 
 		 /*
 		if (args.length == 2 ) {
@@ -94,9 +97,26 @@ public class TypeFinder {
 					return super.visit(node);
 				}
 				
+				
+				public boolean visit(SimpleName node) {
+					String name = node.getFullyQualifiedName();
+					IBinding bind = node.resolveBinding();
+					if (bind.getKind() == IBinding.VARIABLE) {
+						IVariableBinding ivb = (IVariableBinding) bind;
+						if (ivb.isParameter()) {
+						System.out.println("Parameter: " + name);
+						}
+					}
+					boolean isDecl = node.isDeclaration();
+					
+					
+					return super.visit(node);
+				}
+				
 		
 				public boolean visit(ClassInstanceCreation node) {
 					Type name = node.getType();
+			
 					System.out.println("Reference: " + name);
 					
 
@@ -104,6 +124,7 @@ public class TypeFinder {
 					return false; // do not continue 
 			}
 				
+
 				
 				
 				public boolean visit(AnnotationTypeDeclaration node) {
@@ -123,6 +144,7 @@ public class TypeFinder {
 					if (e.getInterfaces() != null) {
 						ITypeBinding[] interfaces = e.getInterfaces();
 						for (ITypeBinding i : interfaces) System.out.println("implements Reference: " + i.getName());
+						
 					}
 					
 					return false; // do not continue 
