@@ -4,10 +4,13 @@ import mainFiles.*;
 
 
 import static org.junit.jupiter.api.Assertions.*;
-
-
-
 import org.junit.jupiter.api.Test;
+
+
+
+import java.io.IOException;
+
+
 
 class UnitTests {
 	
@@ -69,16 +72,30 @@ class UnitTests {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		//assertEquals(finder.outputString, "Day. Declarations found: 1; references found: 2.");
+		assertEquals(finder.outputString, "Vehicle. Declarations found: 1; references found: 3.");
 		
 	}
 	
-	
+	/**
+	 * Tests for the correct output when given a class with declarations and references.
+	 */
+	@Test
+	void testFalseDir() {
+		String[] args = {BASEDIR + "/TestFiles/testDir-DoesNotExist", "Vehicle"};
+		
+		assertThrows(NullPointerException.class, () -> {
+			TypeFinder finder = new TypeFinder();
+			finder.run(args);
+		});
+
+		
+		
+	}
 	
 	/*
 	 * Test enumerations 						x
-	 * Test classes
-	 * Test variables
+	 * Test classes								x
+	 * Test variables							x
 	 * Test incorrect directory (unusable)
 	 * Test multiple files
 	 * 
