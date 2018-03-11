@@ -1,3 +1,4 @@
+package mainFiles;
 import java.util.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -24,29 +25,32 @@ public class TypeFinder {
 	  public static int  referenceCount = 0;
 	  public static int  declerationCount = 0;
 	  public static String javaType;
+	  public static String directory;
 	  
 	  
 	  public static void main(String[] args) throws IOException {
 		  
-		  javaType = "MyInterface";
 
 
-		parseDirectory("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles");
+			if (args.length == 2 ) {
+			  	directory = args[0];	
+				javaType= args[1];	//Need to use to count which java type you want
+				parseDirectory(directory);
+			}
+			else {
+				System.out.println("Please provide directory and java type");
+			}
+		
+
+
+//		parseDirectory("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles");
 		
 		
 		System.out.println(javaType + ". Declarations found: " + declerationCount + "; references found: " + referenceCount + ".");
 	    
 		//parseDirectory("/home/andrew/Projects/SENG300-Iteration1/TestFiles");
 
-		 /*
-		if (args.length == 2 ) {
-		  	String directory = args[0];	
-			String javaType= args[1];	//Need to use to count which java type you want
-			parse(readFileToString(directory));
-		}
-		else {
-			System.out.println("Please provide directory and java type");
-		}*/
+
 
 	  }
 	  
@@ -118,11 +122,15 @@ public class TypeFinder {
 				
 				public boolean visit(VariableDeclarationFragment node) {
 					
+					String name = null;
+		            if(node.getParent() instanceof FieldDeclaration){
+		                FieldDeclaration declaration = ((FieldDeclaration) node.getParent());
+		                name = declaration.getType().toString();
+		                if (javaType.equals(name)) referenceCount++;
+
+		            }
 					
-					
-					
-					
-					String name = node.getName().getFullyQualifiedName();
+		            // Printing out full data
 					System.out.println("Reference: " + name);
 					
 
@@ -147,12 +155,14 @@ public class TypeFinder {
 				
 		
 				public boolean visit(ClassInstanceCreation node) {
-					Type name = node.getType();
-			
+					String name = node.getType().toString();
+					if (javaType.equals(name)) referenceCount++;
+					
+					// Printing out full data
 					System.out.println("Reference: " + name);
 					
-
-
+					
+					
 					return false; // do not continue 
 			}
 				
@@ -161,6 +171,10 @@ public class TypeFinder {
 				
 				public boolean visit(AnnotationTypeDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
+					if (javaType.equals(name)) declerationCount++;
+					
+					
+					// Printing out full data
 					System.out.println("Declaration: " + name);
 					
 					return false; // do not continue 
@@ -169,14 +183,18 @@ public class TypeFinder {
 				
 				public boolean visit(EnumDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
-					System.out.println("Declaration: " + name);
-					
+					if (javaType.equals(name)) declerationCount++;
 					ITypeBinding e = node.resolveBinding();
+					if (e.getInterfaces() != null) {
+						ITypeBinding[] interfaces = e.getInterfaces();
+						for (ITypeBinding i : interfaces) if (javaType.equals(i.getQualifiedName())) referenceCount++;
+					}
 					
+					// Printing out full data
+					System.out.println("Declaration: " + name);
 					if (e.getInterfaces() != null) {
 						ITypeBinding[] interfaces = e.getInterfaces();
 						for (ITypeBinding i : interfaces) System.out.println("implements Reference: " + i.getName());
-						
 					}
 					
 					return false; // do not continue 
