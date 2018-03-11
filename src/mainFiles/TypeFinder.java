@@ -22,16 +22,29 @@ import org.eclipse.jdt.core.dom.*;
 public class TypeFinder {
 	
 	
-	  public static int  referenceCount = 0;
-	  public static int  declerationCount = 0;
-	  public static String javaType;
-	  public static String directory;
+
+	
+	  int  referenceCount = 0;
+	  int  declerationCount = 0;
+	  String javaType = "";
+	  String directory = "";
+	  public String outputString;
 	  
+
+
 	  
 	  public static void main(String[] args) {
 		  
 
+		  TypeFinder finder = new TypeFinder();
+		  finder.run(args);
 
+
+
+
+	  }
+	  
+	  public void run(String[] args) {
 			if (args.length == 2 ) {
 			  	directory = args[0];	
 				javaType = args[1];	//Need to use to count which java type you want
@@ -47,14 +60,11 @@ public class TypeFinder {
 			}
 		
 
-
-//		parseDirectory("/Users/zachalbers/eclipse-workspace/SENG300-Iteration1/TestFiles");
 		
-		
-		System.out.println(javaType + ". Declarations found: " + declerationCount + "; references found: " + referenceCount + ".");
+		outputString = javaType + ". Declarations found: " + declerationCount + "; references found: " + referenceCount + ".";
+		System.out.println(outputString);
 	    
 		//parseDirectory("/home/andrew/Projects/SENG300-Iteration1/TestFiles");
-
 
 
 	  }
@@ -62,7 +72,7 @@ public class TypeFinder {
 	  
 
 
-	  public static void parse(String str) {
+	  public void parse(String str) {
 		  
 		  Map options = JavaCore.getOptions();
 		  options.put(JavaCore.COMPILER_COMPLIANCE, JavaCore.VERSION_1_5);
@@ -212,7 +222,7 @@ public class TypeFinder {
 		}
 	  
 	  
-	  public static String readFileToString(String filePath) throws IOException {
+	  public String readFileToString(String filePath) throws IOException {
 			StringBuilder fileData = new StringBuilder(1000);
 			BufferedReader reader = new BufferedReader(new FileReader(filePath));
 	 
@@ -231,7 +241,7 @@ public class TypeFinder {
 	 
 	}
 	  
-	  public static void parseDirectory(String filePath) throws IOException {
+	  public void parseDirectory(String filePath) throws IOException {
 		  File directory = new File(filePath);
 		  
 		  File[] files = directory.listFiles();
