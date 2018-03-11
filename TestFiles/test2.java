@@ -1,18 +1,32 @@
+public class Vehicle{
 
 
 
 
+	// public interface MyInterface{}
+    //
+    //
+	// public enum Day implements MyInterface{
+	//     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+	//     THURSDAY, FRIDAY, SATURDAY
+	// }
+    //
+    //
+	// Day dayVariable1;
 
-class Person {
+	public static void main(String[] args) {
 
-    // public enum Day{
-    //     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-    //     THURSDAY, FRIDAY, SATURDAY
-    // }
+		Vehicle test1 = new Vehicle();
 
-    public void method1() {
 
-        String abc = "123";
-    }
+		// Day dayVariable2;
+        //
+		// System.out.println(Day.SUNDAY);
+	}
 
 }
+
+
+class Person extends Vehicle {
+
+	}
