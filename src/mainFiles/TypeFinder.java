@@ -233,15 +233,24 @@ public class TypeFinder {
 	}
 	  
 	  public void parseDirectory(String filePath) throws IOException {
-		  File directory = new File(filePath);
+
+		 
+			  File directory = new File(filePath);
+			  File[]files = directory.listFiles();
 		  
-		  File[] files = directory.listFiles();
 		  
-		  for (File i: files) {
-			  String currentFilePath = i.getAbsolutePath();
-			  if (i.isFile()) parse(readFileToString(currentFilePath));
-		  }
 		  
+		  
+		  //try {
+			  for (File i: files) {
+				  String currentFilePath = i.getAbsolutePath();
+				  if (i.isFile()) parse(readFileToString(currentFilePath));
+			  	}
+			  //} catch (NullPointerException e) {
+				  //System.out.println("Directory does not exist");
+				  //if (DEBUG) e.printStackTrace();
+				  //System.exit(0);
+		  //}
 		  
 	  }
 	  

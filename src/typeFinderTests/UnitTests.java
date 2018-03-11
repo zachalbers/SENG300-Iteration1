@@ -76,8 +76,9 @@ class UnitTests {
 		
 	}
 	
+	
 	/**
-	 * Tests for the correct output when given a class with declarations and references.
+	 * Tests that the correct exception is thrown when passed 
 	 */
 	@Test
 	void testFalseDir() {
@@ -86,17 +87,29 @@ class UnitTests {
 		assertThrows(NullPointerException.class, () -> {
 			TypeFinder finder = new TypeFinder();
 			finder.run(args);
-		});
+		});	
+	}
+	
+	
+	/**
+	 * Tests that the correct exception is thrown when passed 
+	 */
+	@Test
+	void testMultipleFiles() {
+		String[] args = {BASEDIR + "/TestFiles/testDir3", "String"};
 
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
 		
-		
+		assertEquals(finder.outputString, "String. Declarations found: 0; references found: 6.");
 	}
 	
 	/*
 	 * Test enumerations 						x
 	 * Test classes								x
 	 * Test variables							x
-	 * Test incorrect directory (unusable)
+	 * Test incorrect directory (unusable)		x
+	 * 
 	 * Test multiple files
 	 * 
 	 * 
