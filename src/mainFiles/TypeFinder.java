@@ -28,14 +28,19 @@ public class TypeFinder {
 	  public static String directory;
 	  
 	  
-	  public static void main(String[] args) throws IOException {
+	  public static void main(String[] args) {
 		  
 
 
 			if (args.length == 2 ) {
 			  	directory = args[0];	
-				javaType= args[1];	//Need to use to count which java type you want
-				parseDirectory(directory);
+				javaType = args[1];	//Need to use to count which java type you want
+				
+				try {
+					parseDirectory(directory);
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
 			}
 			else {
 				System.out.println("Please provide directory and java type");
