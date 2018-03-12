@@ -144,18 +144,30 @@ public class TypeFinder {
 				}
 				
 				
-				public boolean visit(SimpleName node) {
-					String name = node.getFullyQualifiedName();
-					IBinding bind = node.resolveBinding();
-					if (bind.getKind() == IBinding.VARIABLE) {
-						IVariableBinding ivb = (IVariableBinding) bind;
-						if (ivb.isParameter()) {
-							referenceCount ++;
-							if (DEBUG) System.out.println("Parameter: " + name);
-						}
+//				public boolean visit(SimpleName node) {
+//					
+//					IBinding bind = node.resolveBinding();
+//					String name = bind.getName();
+//					if (bind.getKind() == IBinding.VARIABLE) {
+//						IVariableBinding ivb = (IVariableBinding) bind;
+//						if (ivb.isParameter() && javaType.equalsIgnoreCase(name)) {
+//							referenceCount++;
+//							if (DEBUG) System.out.println("Parameter: " + name);
+//						}
+//					}
+//					
+//					
+//					
+//					return super.visit(node);
+//				}
+				
+				public boolean visit(MethodDeclaration node) {
+				
+					for (Object o : node.parameters()) {
+						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;
+						//System.out.println(javaType.equals(svd.getType().toString()));
+						if (javaType.equals(svd.getType().toString())) referenceCount++;
 					}
-					boolean isDecl = node.isDeclaration();
-					
 					
 					return super.visit(node);
 				}
