@@ -1,9 +1,11 @@
 
-public class Cube {
+class Cube {
 
 	int height;
 	int length;
 	int depth;
+
+	public Cube () {}
 
 	public Cube (int height, int length, int depth) {
 		this.height = height;

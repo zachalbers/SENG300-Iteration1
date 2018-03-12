@@ -83,7 +83,7 @@ class UnitTests {
 	 */
 	@Test
 	void testFalseDir() {
-		String[] args = {BASEDIR + "/TestFiles/testDir-DoesNotExist", "Vehicle"};
+		String[] args = {BASEDIR + "/TestFiles/NoDir", "Vehicle"};
 		
 		assertThrows(NullPointerException.class, () -> {
 			TypeFinder finder = new TypeFinder();
@@ -120,21 +120,6 @@ class UnitTests {
 	}
 	
 	
-	
-	
-	/*
-	 * Test enumerations 						x
-	 * Test classes								x
-	 * Test variables							x
-	 * Test incorrect directory (unusable)		x
-	 * 
-	 * Test multiple files						x
-	 * 
-	 * 
-	 *
-	 * 
-	 * 
-	 */
 	
 	
 }

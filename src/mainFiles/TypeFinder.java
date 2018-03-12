@@ -4,9 +4,8 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.HashSet;
 import java.util.Map;
-import java.util.Set;
+
 
 import javax.swing.ListCellRenderer;
 
@@ -236,23 +235,23 @@ public class TypeFinder {
 	  
 	  public void parseDirectory(String filePath) throws IOException {
 
-		 
 			  File directory = new File(filePath);
-			  File[]files = directory.listFiles();
-		  
-		  
-		  
-		  
-		  //try {
+			  File[] files = null;
+			  
+			  try {
+				  files = directory.listFiles(); 
+				  if (files == null) throw new NullPointerException();
+			  } catch (NullPointerException e) {
+				  System.out.println("Directory '" + directory +"' does not exist.");
+				  if (DEBUG) e.printStackTrace();
+				  System.exit(0);  
+			  }
+
 			  for (File i: files) {
 				  String currentFilePath = i.getAbsolutePath();
 				  if (i.isFile()) parse(readFileToString(currentFilePath));
 			  	}
-			  //} catch (NullPointerException e) {
-				  //System.out.println("Directory does not exist");
-				  //if (DEBUG) e.printStackTrace();
-				  //System.exit(0);
-		  //}
+
 		  
 	  }
 	  
