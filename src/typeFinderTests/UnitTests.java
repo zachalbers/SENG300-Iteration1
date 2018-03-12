@@ -15,7 +15,8 @@ import java.io.IOException;
 class UnitTests {
 	
 	// BASEDIR should be the directory to the 'SENG300-Iteration1' folder
-	private static String BASEDIR = "/home/andrew/Projects/SENG300-Iteration1"; 
+	//private static String BASEDIR = "/home/andrew/Projects/SENG300-Iteration1"; 
+	private static String BASEDIR = "/Users/zachalbers/eclipse-workspace/SENG300-Iteration1"; 
 
 	
 	/**
@@ -92,7 +93,7 @@ class UnitTests {
 	
 	
 	/**
-	 * Tests that the correct exception is thrown when passed 
+	 * Tests that the correct output is given when the type is in multiple files.
 	 */
 	@Test
 	void testMultipleFiles() {
@@ -104,13 +105,30 @@ class UnitTests {
 		assertEquals(finder.outputString, "String. Declarations found: 0; references found: 6.");
 	}
 	
+	
+	/**
+	 * Tests that basic parameter in methods and initializers are counted correctly.
+	 */
+	@Test
+	void testParameters() {
+		String[] args = {BASEDIR + "/TestFiles/testDir4", "int"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals(finder.outputString, "int. Declarations found: 0; references found: 8.");
+	}
+	
+	
+	
+	
 	/*
 	 * Test enumerations 						x
 	 * Test classes								x
 	 * Test variables							x
 	 * Test incorrect directory (unusable)		x
 	 * 
-	 * Test multiple files
+	 * Test multiple files						x
 	 * 
 	 * 
 	 *

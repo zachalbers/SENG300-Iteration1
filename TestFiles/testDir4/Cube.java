@@ -1,16 +1,19 @@
 
 public class Cube {
 
+	int height;
+	int length;
+	int depth;
+
 	public Cube (int height, int length, int depth) {
-		
+		this.height = height;
+		this.length = length;
+		this.depth = depth;
+
 	}
 
-	public void uselessMethod(int bob) {
-		
+	public void method1(int var1) {
+		int var2 = var1;
 	}
-	
+
 }
-
-
-
-
