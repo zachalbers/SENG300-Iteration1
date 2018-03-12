@@ -26,7 +26,7 @@ public class TypeFinder {
 	
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
-	  boolean DEBUG = true;
+	  boolean DEBUG = false;
 	  String javaType = "";
 	  String directory = "";
 	  public String outputString;
@@ -144,22 +144,7 @@ public class TypeFinder {
 				}
 				
 				
-//				public boolean visit(SimpleName node) {
-//					
-//					IBinding bind = node.resolveBinding();
-//					String name = bind.getName();
-//					if (bind.getKind() == IBinding.VARIABLE) {
-//						IVariableBinding ivb = (IVariableBinding) bind;
-//						if (ivb.isParameter() && javaType.equalsIgnoreCase(name)) {
-//							referenceCount++;
-//							if (DEBUG) System.out.println("Parameter: " + name);
-//						}
-//					}
-//					
-//					
-//					
-//					return super.visit(node);
-//				}
+
 				
 				public boolean visit(MethodDeclaration node) {
 				
@@ -172,6 +157,11 @@ public class TypeFinder {
 					return super.visit(node);
 				}
 				
+				public boolean visit(MethodInvocation node) {
+					
+					
+					return super.visit(node);
+				}
 				
 		
 				public boolean visit(ClassInstanceCreation node) {
