@@ -25,7 +25,8 @@ public class TypeFinder {
 	
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
-	  boolean DEBUG = false;
+	  boolean DEBUG = true;
+	  boolean containsPackage = false;
 	  String javaType = "";
 	  String directory = "";
 	  public String outputString;
@@ -48,6 +49,7 @@ public class TypeFinder {
 			if (args.length == 2 ) {
 			  	directory = args[0];	
 				javaType = args[1];	//Need to use to count which java type you want
+				if (javaType.contains(".")) containsPackage = true;
 				
 				try {
 					parseDirectory(directory);
@@ -104,26 +106,48 @@ public class TypeFinder {
 				public boolean visit(TypeDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
 					
+					ITypeBinding nodeBinding = node.resolveBinding();
+					if (containsPackage) {
+						if (nodeBinding.getPackage() != null) {
+							name = nodeBinding.getPackage().getName() + "." + name;
+						}
+					}
+						
 					if (javaType.equals(name)) declerationCount++;
 					if (DEBUG) System.out.println("Declaration: " +name);
 			
-					
-					
+
 					if (node.getSuperclassType() != null) {
-						if (javaType.equals(node.getSuperclassType().toString())) referenceCount++;
+						
+						if (containsPackage) {
+							ITypeBinding superNodeBinding = node.getSuperclassType().resolveBinding();
+							if (superNodeBinding.getPackage() != null) {
+								String superClassName = superNodeBinding.getPackage().getName() + "." + node.getSuperclassType();
+								if (javaType.equals(superClassName)) referenceCount++;
+							}
+						} else {
+							if (javaType.equals(node.getSuperclassType().toString())) referenceCount++;
+						}
 						if (DEBUG) System.out.println("This class extends " + node.getSuperclassType());
 						
 					}
-					
-					ITypeBinding nodeBinding = node.resolveBinding();
+
+		
 					if (nodeBinding.getInterfaces() != null) {
 						ITypeBinding[] interfaces = nodeBinding.getInterfaces();
-						for (ITypeBinding i : interfaces) {
-							if (javaType.equals(i.getQualifiedName())) referenceCount++;
-							if (DEBUG) System.out.println("implements Reference: " + i.getName());
-							
+						if (containsPackage) {
+							for (ITypeBinding i : interfaces) {
+								if (javaType.equals(i.getQualifiedName())) referenceCount++;
+								if (DEBUG) System.out.println("implements Reference: " + i.getQualifiedName());
+							}
+						} else {
+							for (ITypeBinding i : interfaces) {
+								if (javaType.equals(i.getName())) referenceCount++;
+								if (DEBUG) System.out.println("implements Reference: " + i.getName());
+							}
 						}
 					}
+					
 					
 					return super.visit(node); 
 				}
@@ -132,13 +156,16 @@ public class TypeFinder {
 				
 				
 				public boolean visit(VariableDeclarationFragment node) {
-					
-					String name = node.resolveBinding().getType().getName();
+					String name;
+					if (containsPackage) {
+						name = node.resolveBinding().getType().getQualifiedName();
+					} else {
+						name = node.resolveBinding().getType().getName();
+					}
+			
 					if (javaType.equals(name)) referenceCount++;
-
 					if (DEBUG) System.out.println("Variable Reference: " + name);
-
-
+	
 					return super.visit(node);
 				}
 				
@@ -146,37 +173,68 @@ public class TypeFinder {
 
 				
 				public boolean visit(MethodDeclaration node) {
+					String name;
+					
+//					if (node.isConstructor()) {
+//						if (javaType.equals(node.getName().getFullyQualifiedName())) referenceCount++;
+//						if (DEBUG) System.out.println("Reference: " + node.getName().getFullyQualifiedName());
+//					}
+					
 				
 					for (Object o : node.parameters()) {
 						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;
-						//System.out.println(javaType.equals(svd.getType().toString()));
-						if (javaType.equals(svd.getType().toString())) referenceCount++;
+						
+						
+						if (containsPackage) {
+							IVariableBinding nodeBinding = svd.resolveBinding();
+							name = nodeBinding.getType().getQualifiedName();
+							if (javaType.equals(name)) referenceCount++;
+							if (DEBUG) System.out.println("Parameter Variable Reference: " + name);
+							
+						} else {
+							name = svd.getType().toString();
+							if (javaType.equals(name)) referenceCount++;
+							if (DEBUG) System.out.println("Parameter Variable Reference: " + name);						
+						}
 					}
 					
 					return super.visit(node);
 				}
 				
 				public boolean visit(MethodInvocation node) {
-					
+
 					
 					return super.visit(node);
 				}
 				
 		
 				public boolean visit(ClassInstanceCreation node) {
-					String name = node.getType().toString();
-					if (javaType.equals(name)) referenceCount++;
+					String name;
+				
+					if (containsPackage) {
+						name = node.resolveTypeBinding().getQualifiedName();			
+					} else {
+						name = node.getType().toString();
+					}
 					
-					if (DEBUG) System.out.println("Reference: " + name);
-	
+					if (javaType.equals(name)) referenceCount++;
+					if (DEBUG) System.out.println("Instance Variable Reference: " + name);
+					
+
 					return false; // do not continue 
 			}
 				
 
 				
-				
 				public boolean visit(AnnotationTypeDeclaration node) {
-					String name = node.getName().getFullyQualifiedName();
+					String name;
+					
+					if (containsPackage) {
+						name = node.resolveBinding().getQualifiedName();		
+					} else {
+						name = node.getName().getFullyQualifiedName();
+					}
+					
 					if (javaType.equals(name)) declerationCount++;
 					
 					if (DEBUG) System.out.println("Declaration: " + name);
@@ -186,24 +244,38 @@ public class TypeFinder {
 				
 				
 				public boolean visit(EnumDeclaration node) {
-					String name = node.getName().getFullyQualifiedName();
-					if (javaType.equals(name)) declerationCount++;
-					if (DEBUG) System.out.println("Declaration: " + name);
-					
-					ITypeBinding e = node.resolveBinding();
-					if (e.getInterfaces() != null) {
-						ITypeBinding[] interfaces = e.getInterfaces();
-						for (ITypeBinding i : interfaces) {
-							if (javaType.equals(i.getQualifiedName())) referenceCount++;
-							if (DEBUG) System.out.println("Implements Reference: " + i.getName());
-						}
+					String name;
+					if (containsPackage) {
+						name = node.resolveBinding().getQualifiedName();		
+					} else {
+						name = node.getName().getFullyQualifiedName();
 					}
 					
+					if (javaType.equals(name)) declerationCount++;
+					if (DEBUG) System.out.println("Declaration: " + name);
 
 					
+					ITypeBinding nodeBinding = node.resolveBinding();
+					if (nodeBinding.getInterfaces() != null) {
+						ITypeBinding[] interfaces = nodeBinding.getInterfaces();
+						if (containsPackage) {
+							for (ITypeBinding i : interfaces) {
+								if (javaType.equals(i.getQualifiedName())) referenceCount++;
+								if (DEBUG) System.out.println("implements Reference: " + i.getQualifiedName());
+							}
+						} else {
+							for (ITypeBinding i : interfaces) {
+								if (javaType.equals(i.getName())) referenceCount++;
+								if (DEBUG) System.out.println("implements Reference: " + i.getName());
+							}
+						}
+					}
+
 					return false; // do not continue 
 				}
 				
+				
+
 
 
 			});
@@ -214,17 +286,17 @@ public class TypeFinder {
 	  
 	  
 	  
-	  public String readFileToString(String filePath) throws IOException {
+	  public String readFile(String filePath) throws IOException {
 			StringBuilder fileData = new StringBuilder(1000);
 			BufferedReader reader = new BufferedReader(new FileReader(filePath));
-	 
-			char[] buf = new char[10];
-			int numRead = 0;
-			while ((numRead = reader.read(buf)) != -1) {
-				//System.out.println(numRead);
-				String readData = String.valueOf(buf, 0, numRead);
+			
+			int numRead = 0; 
+			char[] buffer = new char[10];
+
+			while ((numRead = reader.read(buffer)) != -1) {
+				String readData = String.valueOf(buffer, 0, numRead);
 				fileData.append(readData);
-				buf = new char[1024];
+				buffer = new char[1024];
 			}
 	 
 			reader.close();
@@ -249,7 +321,7 @@ public class TypeFinder {
 
 			  for (File i: files) {
 				  String currentFilePath = i.getAbsolutePath();
-				  if (i.isFile()) parse(readFileToString(currentFilePath));
+				  if (i.isFile()) parse(readFile(currentFilePath));
 			  	}
 
 		  

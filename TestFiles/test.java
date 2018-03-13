@@ -1,4 +1,4 @@
-
+package somePackage;
 
 
 
@@ -13,42 +13,43 @@
  }
 
 
+
  @interface SomeAnnotation {
     String author();
     String date();
 
  }
-
- @interface SomeAnnotation2 {
-     String author2();
-     String date2();
-
- }
-
-
- class Person implements SomeAnnotation{
-
-
- 	public static void main(String[] args) {
-
- 		String string1 = "Hello";
-
- 		String string2 = "World";
-
-         int x = 5;
-
-
-         Person
-
- 		Person person1 = new Person(string1);
-
-         Person person2 = new Person();
-
-
-
-
-
- 	}
+ //
+ // @interface SomeAnnotation2 {
+ //     String author2();
+ //     String date2();
+ //
+ // }
+ //
+ //
+ // class Person implements SomeAnnotation{
+ //
+ //
+ // 	public static void main(String[] args) {
+ //
+ // 		String string1 = "Hello";
+ //
+ // 		String string2 = "World";
+ //
+ //         int x = 5;
+ //
+ //
+ //         Person
+ //
+ // 		Person person1 = new Person(string1);
+ //
+ //         Person person2 = new Person();
+ //
+ //
+ //
+ //
+ //
+ // 	}
 
 
  // 	public Vehicle method1() {
@@ -61,16 +62,16 @@
  //
  // }
  //
- // class Vehicle {
- //
- //
- // 	// public void method2() {
- // 	// 	Person person2 = new Person();
- // 	//}
- //
- // }
+// class Person {
+//
+// }
+
+ class Vehicle {
+
+     //Vehicle x = new Vehicle();
 
 
+ }
 
 
 
