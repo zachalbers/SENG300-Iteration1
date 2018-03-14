@@ -25,7 +25,7 @@ public class TypeFinder {
 	
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
-	  boolean DEBUG = false;
+	  boolean DEBUG = true;
 	  boolean containsPackage = false;
 	  String javaType = "";
 	  String directory = "";
@@ -202,7 +202,8 @@ public class TypeFinder {
 						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
 					}
 					else {
-						name = imb.getReturnType().toString();
+
+						name = imb.getReturnType().getName();
 						if (javaType.equals(name)) referenceCount ++;
 						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
 					}

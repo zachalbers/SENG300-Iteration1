@@ -5,14 +5,11 @@ import java.io.FileReader;
 import java.io.IOException;
 
 
-public class test {
+public class Test {
 
 	private static final String FILENAME = "someDirectoryName";
 
 
-	public Double method1(){
-		return 3.14;
-	}
 
 	public static void main(String[] args) throws NullPointerException{
 
