@@ -1,3 +1,5 @@
+package package2;
+
 public class extraFile1 {
 
 	public static String str1 = "1";

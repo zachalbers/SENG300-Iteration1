@@ -1,3 +1,6 @@
+package package1;
+
+
 public class Vehicle {
 
 	// public static String one = "abc";
