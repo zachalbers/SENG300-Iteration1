@@ -25,7 +25,7 @@ public class TypeFinder {
 	
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
-	  boolean DEBUG = true;
+	  boolean DEBUG = false;
 	  boolean containsPackage = false;
 	  String javaType = "";
 	  String directory = "";
@@ -207,11 +207,9 @@ public class TypeFinder {
 						if (javaType.equals(name)) referenceCount ++;
 						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
 					}
-//				
+				
 					for (Object o : node.parameters()) {
-						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;
-						
-						
+						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;	
 						if (containsPackage) {
 							IVariableBinding nodeBinding = svd.resolveBinding();
 							name = nodeBinding.getType().getQualifiedName();
