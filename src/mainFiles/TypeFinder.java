@@ -170,7 +170,24 @@ public class TypeFinder {
 				}
 				
 				
+				public boolean visit(ImportDeclaration node) {
+					String name = node.getName().toString();
+					String[] importParts = name.split("\\.");
+					String[] typeParts = javaType.split("\\.");
+					
+			
+						boolean match = true;
+						for (int i = 0; i < typeParts.length; i ++) {
+							if ((typeParts.length - i > 0 && importParts.length - i > 0)
+									&& !(typeParts[typeParts.length - (1 + i)].equals(importParts[importParts.length - (1 + i)]))) 
+									{ match = false;}
+						}
+						if (match) referenceCount++;
 
+					return super.visit(node);
+				}
+				
+				
 				
 				public boolean visit(MethodDeclaration node) {
 					String name;
@@ -211,11 +228,6 @@ public class TypeFinder {
 					return super.visit(node);
 				}
 				
-				public boolean visit(MethodInvocation node) {
-
-					
-					return super.visit(node);
-				}
 				
 		
 				public boolean visit(ClassInstanceCreation node) {
