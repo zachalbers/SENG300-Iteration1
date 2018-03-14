@@ -222,11 +222,19 @@ public class TypeFinder {
 						}
 					}
 					
+					@SuppressWarnings("deprecation")
+					List exceptions = node.thrownExceptions();
+					for (Object e : exceptions) {
+						if (DEBUG) System.out.println(e.toString());
+						if (javaType.equals(e.toString())) referenceCount ++;
+					}
+//					
 					return super.visit(node);
 				}
 				
 				
-		
+				
+				
 				public boolean visit(ClassInstanceCreation node) {
 					String name;
 				
@@ -243,7 +251,15 @@ public class TypeFinder {
 					return false; // do not continue 
 			}
 				
-
+				
+				public boolean visit(CatchClause node) {
+					SingleVariableDeclaration x = node.getException();
+					System.out.println(x.getType().resolveBinding());
+//					System.out.println(x.getType().resolveBinding().getQualifiedName()); //this throws an error for me
+//					if (javaType.equals(node.getException().getType().toString())) referenceCount++;
+					
+					return super.visit(node);
+				}
 				
 				public boolean visit(AnnotationTypeDeclaration node) {
 					String name;

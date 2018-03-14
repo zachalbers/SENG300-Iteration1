@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.lang.String;
 
 package package4;
@@ -20,8 +21,15 @@ class Cube {
 
 	}
 
-	public int method1(int var1) {
+	public int method1(int var1) throws IOException{
 		int var2 = var1;
+		try {
+			continue;
+		}
+		catch (IOexception e) {
+			continue;
+		}
+		
 	}
 
 }
