@@ -222,9 +222,44 @@ class UnitTests {
 		
 		assertEquals("java.io.BufferedReader. Declarations found: 0; references found: 3.", finder.outputString);
 	}
+	
+	/**
+	 * Tests that the correct output is given when the type is an exception used in a try-catch-statement.
+	 */
+	@Test
+	void testCatchExceptions() {
+		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.io.IOException"};
 
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("java.io.IOException. Declarations found: 0; references found: 3.", finder.outputString);
+	}
+
+	/**
+	 * Tests that the correct output is given when throwing a new exception.
+	 */
+	@Test
+	void testThrowNewExceptions() {
+		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.lang.IllegalArgumentException"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("java.lang.IllegalArgumentException. Declarations found: 0; references found: 1.", finder.outputString);
+	}
 	
-	
-	
+	/**
+	 * Tests that the correct output is given when a method throws an exception.
+	 */
+	@Test
+	void testThrowsExceptions() {
+		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.lang.NullPointerException"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("java.lang.NullPointerException. Declarations found: 0; references found: 2.", finder.outputString);
+	}
 	
 }

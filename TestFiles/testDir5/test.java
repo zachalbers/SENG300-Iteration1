@@ -9,7 +9,12 @@ public class test {
 
 	private static final String FILENAME = "someDirectoryName";
 
-	public static void main(String[] args) {
+
+	public Double method1(){
+		return 3.14;
+	}
+
+	public static void main(String[] args) throws NullPointerException{
 
 		if (args.length > 2 ) throw new IllegalArgumentException("Incorrect number of arguments");
 		BufferedReader br = null;
