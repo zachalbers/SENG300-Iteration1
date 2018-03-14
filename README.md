@@ -17,7 +17,8 @@ Members:
    1)Andrew Jamison
 	 2)Bryan Lam
 	 3)Zachariah Albers
-   
+     
+   See git-log for information regarding commits. Further information can be found on https://github.com/zachalbers/SENG300-Iteration1 .
    
 III. Design
 -----------
