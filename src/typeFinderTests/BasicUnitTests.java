@@ -20,6 +20,33 @@ class BasicUnitTests {
 
 	
 	/**
+	 * Tests that the correct exception is thrown when passed too few arguments
+	 */
+	@Test
+	void testTooFewArgs() {
+		String[] args = {BASEDIR + "/TestFiles/testDir1"};
+		
+		assertThrows(IllegalArgumentException.class, () -> {
+			TypeFinder finder = new TypeFinder();
+			finder.run(args);
+		});	
+	}
+	
+	/**
+	 * Tests that the correct exception is thrown when passed too many arguments
+	 */
+	@Test
+	void testTooManyArgs() {
+		String[] args = {BASEDIR + "/TestFiles/testDir1"};
+		
+		assertThrows(IllegalArgumentException.class, () -> {
+			TypeFinder finder = new TypeFinder();
+			finder.run(args);
+		});	
+	}
+	
+	
+	/**
 	 * Tests for the correct output when given an empty file.
 	 */
 	@Test

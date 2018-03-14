@@ -1,0 +1,297 @@
+commit 5a9ddcac6b6a03c57126cfb2f4cff139cd71d7d8
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Tue Mar 13 21:32:32 2018 -0600
+
+    Create README.md
+
+commit 26fc33e2029d1b8115cadb73a13b87dd5d1026e8
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Tue Mar 13 21:04:15 2018 -0600
+
+    Add files via upload
+
+commit 2e228c2210a2fa6b224fdf133d6e31d87fb4c39a
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Tue Mar 13 21:03:50 2018 -0600
+
+    Delete Group24 Structural Diagram.pdf
+
+commit b2d6e9381921049fd2477978e0574041048585ee
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Tue Mar 13 21:03:44 2018 -0600
+
+    Delete Group24 State Diagram.pdf
+
+commit 2f7498816441ed71fb36c1824e91566960cea2b1
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Tue Mar 13 21:03:38 2018 -0600
+
+    Delete Group24 Sequential Diagram.pdf
+
+commit 4323c4e1bbbcc64625fbb219cef29b194329c6b6
+Merge: 304cb50 65f066f
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Tue Mar 13 20:11:43 2018 -0600
+
+    fixed merge conflict in Cube.java
+
+commit 304cb506af582c23bb4db1246e796a0f077ee214
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Tue Mar 13 20:10:30 2018 -0600
+
+    added importDeclaration visit method
+
+commit ccd46ac739be8d3769390dd106b5fcfd1970540d
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Tue Mar 13 20:09:22 2018 -0600
+
+    added importDeclaration visit method
+
+commit 65f066fa84b7f78b9948429f36dbe97d01b653ee
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Tue Mar 13 18:26:58 2018 -0600
+
+    update file name and some test cases
+
+commit ddd9f97bbd6f8074d10f77b34684c582bc043e70
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Tue Mar 13 18:08:12 2018 -0600
+
+    extra test cases
+
+commit 4eb51e681e14fac1d1ca5a1ff6574043e3d87c57
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Tue Mar 13 18:05:42 2018 -0600
+
+    added support for method return types
+
+commit 50b9c5266ac1fc8eecdf94774a3a36b64e75e665
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Tue Mar 13 17:49:09 2018 -0600
+
+    Updated all methods to check for full package names if requested
+
+commit 474684a3e433a496525bfbbb040438fa2cff7d37
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Tue Mar 13 12:19:07 2018 -0600
+
+    Add files via upload
+
+commit dd5885f802c5e35817f6d69a93ca2c5838e7e952
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Tue Mar 13 12:18:40 2018 -0600
+
+    Delete Group24 Sequential Diagram.pdf
+
+commit b388ae0d3caa5e9a8b8d4ea102946cd2ae9b6951
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Tue Mar 13 12:18:07 2018 -0600
+
+    Delete Group24 State Diagram.pdf
+
+commit ba82575ebe585911233af5b226671f09b0ea57cc
+Merge: 01dfa03 5ec6269
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Mon Mar 12 19:46:19 2018 -0600
+
+    Merge pull request #1 from zachalbers/bryanlam549-patch-1
+    
+    Add files via upload
+
+commit 5ec6269e7a99adb7be6c30486600cf679f499b2e
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Mon Mar 12 19:45:12 2018 -0600
+
+    Add files via upload
+
+commit 01dfa038ce1f8af2aa6ebad53cf2682ccf0be751
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Mon Mar 12 02:25:47 2018 -0600
+
+    Updated method of catching unviable directory
+
+commit 259dd96980f4085b9e68ec6e27e1a15f8ad69aa7
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Mon Mar 12 01:58:45 2018 -0600
+
+    Test case for parameters
+
+commit 5e97274e66abf6e0e486492e5aef5b5d04ec4bbf
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 11 19:45:13 2018 -0600
+
+    added new test file
+
+commit 086e82f65ecd595a1eafff8a9a28a9d4a2deccad
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 11 19:11:20 2018 -0600
+
+    new method parameter searching method
+
+commit 0a373628075b597e170e2d21ec62e1a2bcb01ded
+Merge: d868e96 86b074f
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 11 17:53:36 2018 -0600
+
+    Merge branch 'master' of https://github.com/zachalbers/SENG300-Iteration1
+
+commit 86b074fbf95054a0ef5fc542b7c5b9c32224a23a
+Author: AndrewJamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 11 17:50:12 2018 -0600
+
+    removing class path since we each have a different one
+
+commit d868e96a424d05cacef8c91b4cbdd20f0da7ebec
+Merge: aedc7ba 844c123
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 11 17:45:41 2018 -0600
+
+    Merge branch 'master' of https://github.com/zachalbers/SENG300-Iteration1
+
+commit aedc7badc38d60596e20d3e6aaaf22ecaef604da
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 11 17:45:35 2018 -0600
+
+    added reference count increment to SimpleName ASTVisitor method
+
+commit 844c12348439faceae90a8df1af388cffcb590e4
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 11 17:41:09 2018 -0600
+
+    added test case for multiple files
+
+commit 2aa1d1b1b0db3f5a4046cc668ac97cc86178a206
+Author: AndrewJamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 11 17:25:43 2018 -0600
+
+    added gitignore file to ignore .classpath file
+
+commit 6fca74905dfd162a990e329c014080cf60a02fa1
+Author: AndrewJamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 11 17:25:02 2018 -0600
+
+    Create .gitignore
+
+commit 10bc953d454f224ed4afe4ffb6caefe45e7a8d84
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 11 17:01:56 2018 -0600
+
+    Added another test case
+
+commit 37f4883df2e456c6d82172d9ed6debcf2fe1b1b2
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 11 16:46:13 2018 -0600
+
+    added DEBUG code. set to true if you want to see everything printed out
+
+commit 77427bac8e87bf55ff73eafdc2d9d3bf85fe0afa
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 11 16:16:03 2018 -0600
+
+    Fixed bug where local method variables weren't being counted
+
+commit d5d8ac1f9eb03803de97980ed31a1f850ca90d4d
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 11 03:20:58 2018 -0600
+
+    Fixed setup of TypeFinder to make it easier to run test cases
+
+commit ec2b8f5274115d729aa77cf2549a8f2d632b3735
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 10 21:20:18 2018 -0700
+
+    Simple test case
+
+commit 9878858049ab04a14ed3472dc13c41e7c0be8a32
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 10 20:58:12 2018 -0700
+
+    Test Case files and command line input
+
+commit 47f284ed06c249e9925a3dfce33d66506dcb2ffd
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 10 19:01:21 2018 -0700
+
+    Updating methods to count reference and declaration types
+
+commit 7e53d03a91638cb2210d46aeb6f9e1591d46a426
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sat Mar 10 17:14:54 2018 -0700
+
+    added SimpleName visit method
+
+commit a804000e420233154995108f7e6364f5c407b814
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 10 01:19:44 2018 -0700
+
+     .
+
+commit 7c4bd3aa782397c952d5afe6ac0dad56337218fe
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 10 00:55:48 2018 -0700
+
+    fixed merge
+
+commit 175ab9513d65acbb2309b24eb4e85818d76ebb3d
+Merge: b7ab9a2 2435093
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 10 00:54:45 2018 -0700
+
+    Merge branch 'master' of https://github.com/zachalbers/SENG300-Iteration1
+
+commit b7ab9a2d0de43659886f6519af984f33f50c4237
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 10 00:52:52 2018 -0700
+
+    Parses all the files in a directory
+
+commit 2435093ce995ac804607d106a1c3d58047b965d1
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sat Mar 10 00:45:37 2018 -0700
+
+    added command line arguments (in comments though)
+    
+    It should work...? But I can't seem to run this file anyways on command line
+    Gives me error: "package org.eclipse.jdt.core+dom does not exist" for some reason even though it works on eclipse
+
+commit 451b4ab2bb5f40d32f8e11c40dba4745506990a1
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 10 00:33:55 2018 -0700
+
+    fixed Annotation types
+
+commit 01906334d0bfe7db0c77ff2ae94e0a6c4f544e6e
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 10 00:19:51 2018 -0700
+
+    added support for resolveBinding
+
+commit 4d5b51500811e983008a4c2d71059de1cf0a3650
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Fri Mar 9 21:33:31 2018 -0700
+
+    Added support for ClassInstanceCreation
+
+commit c40a9c609439d41c0a2e397c2d9efce635327e76
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Fri Mar 9 14:42:00 2018 -0700
+
+    Can check for Variable names, enums, and classes
+
+commit 1d46852e95e8140579df97a62d7dd614fbfea181
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Fri Mar 9 12:19:58 2018 -0700
+
+    Test Files
+
+commit 8ed554de7d4434b9e650ec35390df2b70f2fa47a
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Tue Mar 6 19:50:30 2018 -0700
+
+    test1
+
+commit 1ff261c2e3782f38b794b07911e03c1f81d9c422
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Tue Mar 6 19:48:55 2018 -0700
+
+    Initial commit

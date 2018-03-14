@@ -76,6 +76,18 @@ class UnitTestWithPackages {
 	}
 	
 	
+//	/**
+//	 * Tests that the correct output is given when the type is in multiple files, but packages are different.
+//	 */
+//	@Test
+//	void testMultipleFiles() {
+//		String[] args = {BASEDIR + "/TestFiles/testDir3", "package3.Person"};
+//
+//		TypeFinder finder = new TypeFinder();
+//		finder.run(args);
+//		
+//		assertEquals(finder.outputString, "package3.Person. Declarations found: 1; references found: 0.");
+//	}
 
 	
 	

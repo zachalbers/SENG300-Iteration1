@@ -46,8 +46,9 @@ public class TypeFinder {
 	  }
 	  
 	  public void run(String[] args) {
-			if (args.length == 2 ) {
-			  	directory = args[0];	
+
+				if (args.length != 2 ) throw new IllegalArgumentException("Incorrect number of arguments");
+				directory = args[0];	
 				javaType = args[1];	//Need to use to count which java type you want
 				if (javaType.contains(".")) containsPackage = true;
 				
@@ -55,11 +56,9 @@ public class TypeFinder {
 					parseDirectory(directory);
 				} catch (IOException e) {
 					e.printStackTrace();
+					System.exit(0);
 				}
-			}
-			else {
-				System.out.println("Please provide directory and java type");
-			}
+
 		
 
 		
@@ -328,16 +327,10 @@ public class TypeFinder {
 	  public void parseDirectory(String filePath) throws IOException {
 
 			  File directory = new File(filePath);
-			  File[] files = null;
 			  
-			  try {
-				  files = directory.listFiles(); 
-				  if (files == null) throw new NullPointerException();
-			  } catch (NullPointerException e) {
-				  System.out.println("Directory '" + directory +"' does not exist.");
-				  if (DEBUG) e.printStackTrace();
-				  System.exit(0);  
-			  }
+			File[] files = directory.listFiles(); 
+			if (files == null) throw new NullPointerException("Directory '" + directory +"' does not exist.");
+
 
 			  for (File i: files) {
 				  String currentFilePath = i.getAbsolutePath();
