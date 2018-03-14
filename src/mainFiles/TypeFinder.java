@@ -179,8 +179,18 @@ public class TypeFinder {
 //						if (javaType.equals(node.getName().getFullyQualifiedName())) referenceCount++;
 //						if (DEBUG) System.out.println("Reference: " + node.getName().getFullyQualifiedName());
 //					}
-					
-				
+					IMethodBinding imb = node.resolveBinding();
+					if (containsPackage) {
+						name = imb.getReturnType().getQualifiedName();
+						if (javaType.equals(name)) referenceCount ++;
+						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
+					}
+					else {
+						name = imb.getReturnType().toString();
+						if (javaType.equals(name)) referenceCount ++;
+						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
+					}
+//				
 					for (Object o : node.parameters()) {
 						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;
 						
