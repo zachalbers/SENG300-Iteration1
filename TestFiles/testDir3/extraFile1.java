@@ -13,3 +13,8 @@ public class extraFile1 {
 
 
 }
+
+
+class Person {
+	
+}

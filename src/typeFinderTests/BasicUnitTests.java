@@ -12,7 +12,7 @@ import java.io.IOException;
 
 
 
-class UnitTests {
+class BasicUnitTests {
 	
 	// BASEDIR should be the directory to the 'SENG300-Iteration1' folder
 	//private static String BASEDIR = "/home/andrew/Projects/SENG300-Iteration1"; 

@@ -18,7 +18,8 @@ class UnitTestWithPackages {
 
 	
 	/**
-	 * Tests for the correct output when given files with comments containing declarations and references.
+	 * Tests for the correct output when given files with comments containing declarations and references
+	 * for full java-type names.
 	 */
 	@Test
 	void testComments() {
@@ -32,7 +33,7 @@ class UnitTestWithPackages {
 	
 	
 	/**
-	 * Tests for the correct output when given an enum with declarations and references.
+	 * Tests for the correct output when given an enum with a full java-type name with declarations and references.
 	 */
 	@Test
 	void testEnum() {
@@ -46,47 +47,36 @@ class UnitTestWithPackages {
 	}	
 	
 	/**
-	 * Tests for the correct output when given a class with declarations and references.
+	 * Tests for the correct output when given a specific class with declarations and references.
 	 */
 	@Test
 	void testClasses() {
-		String[] args = {BASEDIR + "/TestFiles/testDir3", "Vehicle"};
+		String[] args = {BASEDIR + "/TestFiles/testDir3", "package3.Vehicle"};
 
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals(finder.outputString, "Vehicle. Declarations found: 1; references found: 3.");
+		assertEquals(finder.outputString, "package3.Vehicle. Declarations found: 1; references found: 3.");
 		
 	}
 
 	
 	
 	/**
-	 * Tests that the correct output is given when the type is in multiple files.
+	 * Tests that the correct output is given when the type is in multiple files, but packages are different.
 	 */
 	@Test
 	void testMultipleFiles() {
-		String[] args = {BASEDIR + "/TestFiles/testDir3", "String"};
+		String[] args = {BASEDIR + "/TestFiles/testDir3", "package3.Person"};
 
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals(finder.outputString, "String. Declarations found: 0; references found: 6.");
+		assertEquals(finder.outputString, "package3.Person. Declarations found: 1; references found: 0.");
 	}
 	
 	
-	/**
-	 * Tests that basic parameter in methods and initializers are counted correctly.
-	 */
-	@Test
-	void testParameters() {
-		String[] args = {BASEDIR + "/TestFiles/testDir4", "int"};
 
-		TypeFinder finder = new TypeFinder();
-		finder.run(args);
-		
-		assertEquals(finder.outputString, "int. Declarations found: 0; references found: 8.");
-	}
 	
 	
 	
