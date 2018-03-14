@@ -1,3 +1,5 @@
+import java.lang.String;
+
 
 class Cube {
 
@@ -14,7 +16,7 @@ class Cube {
 
 	}
 
-	public void method1(int var1) {
+	public int method1(int var1) {
 		int var2 = var1;
 	}
 
