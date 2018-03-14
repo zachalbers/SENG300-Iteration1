@@ -1,6 +1,6 @@
-import java.lang.String;
-
-package somePackage;
+// import java.lang.String;
+//
+// package somePackage;
 
 
 
@@ -16,11 +16,11 @@ package somePackage;
 
 
 
- @interface SomeAnnotation {
-    String author();
-    String date();
-
- }
+ // @interface SomeAnnotation {
+ //    String author();
+ //    String date();
+ //
+ // }
  //
  // @interface SomeAnnotation2 {
  //     String author2();
