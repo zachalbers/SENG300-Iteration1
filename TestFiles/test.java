@@ -4,15 +4,15 @@ package somePackage;
 
 
 
- public interface MyInterface{
-
- }
-
-
- public enum Day implements MyInterface{
-     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-     THURSDAY, FRIDAY, SATURDAY
- }
+ // public interface MyInterface{
+ //
+ // }
+ //
+ //
+ // public enum Day implements MyInterface{
+ //     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
+ //     THURSDAY, FRIDAY, SATURDAY
+ // }
 
 
 
@@ -68,12 +68,6 @@ package somePackage;
 //
 // }
 
- class Vehicle {
-
-     //Vehicle x = new Vehicle();
-
-
- }
 
 
 

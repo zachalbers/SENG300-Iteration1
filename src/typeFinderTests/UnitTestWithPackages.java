@@ -1,12 +1,11 @@
 package typeFinderTests;
 
-import mainFiles.*;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
+import mainFiles.*;
+
+
 
 class UnitTestWithPackages {
 
@@ -27,7 +26,7 @@ class UnitTestWithPackages {
 
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
-		assertEquals(finder.outputString, "java.lang.String. Declarations found: 0; references found: 1.");
+		assertEquals("java.lang.String. Declarations found: 0; references found: 1.",  finder.outputString);
 		
 	}
 	
@@ -42,7 +41,7 @@ class UnitTestWithPackages {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals(finder.outputString, "package3.Vehicle.Day. Declarations found: 1; references found: 2.");
+		assertEquals("package3.Vehicle.Day. Declarations found: 1; references found: 2.", finder.outputString);
 		
 	}	
 	
@@ -56,7 +55,7 @@ class UnitTestWithPackages {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals(finder.outputString, "package3.Vehicle. Declarations found: 1; references found: 3.");
+		assertEquals("package3.Vehicle. Declarations found: 1; references found: 3.", finder.outputString);
 		
 	}
 
@@ -72,24 +71,24 @@ class UnitTestWithPackages {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals(finder.outputString, "package3.Person. Declarations found: 1; references found: 0.");
+		assertEquals("package3.Person. Declarations found: 1; references found: 0.", finder.outputString);
 	}
 	
 	
-//	/**
-//	 * Tests that the correct output is given when the type is in multiple files, but packages are different.
-//	 */
-//	@Test
-//	void testMultipleFiles() {
-//		String[] args = {BASEDIR + "/TestFiles/testDir3", "package3.Person"};
-//
-//		TypeFinder finder = new TypeFinder();
-//		finder.run(args);
-//		
-//		assertEquals(finder.outputString, "package3.Person. Declarations found: 1; references found: 0.");
-//	}
+	/**
+	 * Tests that the correct output is given when the type is in an import statement.
+	 */
+	@Test
+	void testImport() {
+		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.io.BufferedReader"};
 
-	
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("java.io.BufferedReader. Declarations found: 0; references found: 3.", finder.outputString);
+	}
+
+
 	
 	
 	

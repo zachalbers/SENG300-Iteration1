@@ -1,32 +1,54 @@
-// public class Vehicle{
-//
-//
-//
-//
-// 	// public interface MyInterface{}
-//     //
-//     //
-// 	// public enum Day implements MyInterface{
-// 	//     SUNDAY, MONDAY, TUESDAY, WEDNESDAY,
-// 	//     THURSDAY, FRIDAY, SATURDAY
-// 	// }
-//     //
-//     //
-// 	// Day dayVariable1;
-//
-// 	public static void main(String[] args) {
-//
-// 		Vehicle test1 = new Vehicle();
-//
-//
-// 		// Day dayVariable2;
-//         //
-// 		// System.out.println(Day.SUNDAY);
-// 	}
-//
-// }
-//
-//
-// class Person extends Vehicle {
-//
-// 	}
+package package5;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+
+
+public class test {
+
+	private static final String FILENAME = "someDirectoryName";
+
+	public static void main(String[] args) throws IllegalArgumentException {
+
+		if (args.length > 2 ) throw new IllegalArgumentException("Incorrect number of arguments");
+		BufferedReader br = null;
+		FileReader fr = null;
+
+		try {
+
+			fr = new FileReader(FILENAME);
+			br = new BufferedReader(fr);
+
+			String sCurrentLine;
+
+			while ((sCurrentLine = br.readLine()) != null) {
+				System.out.println(sCurrentLine);
+			}
+
+		} catch (IOException e) {
+
+			e.printStackTrace();
+
+		} finally {
+
+			try {
+
+				if (br != null)
+					br.close();
+
+				if (fr != null)
+					fr.close();
+
+			} catch (IOException ex) {
+
+				ex.printStackTrace();
+
+			}
+
+		}
+
+	}
+
+}

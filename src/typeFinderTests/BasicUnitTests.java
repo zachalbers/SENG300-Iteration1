@@ -1,12 +1,9 @@
 package typeFinderTests;
 
-import mainFiles.*;
-
-
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-
+import mainFiles.*;
 
 import java.io.IOException;
 
@@ -57,7 +54,7 @@ class BasicUnitTests {
 
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
-		assertEquals(finder.outputString, "String. Declarations found: 0; references found: 0.");
+		assertEquals("String. Declarations found: 0; references found: 0.", finder.outputString);
 		
 	}
 
@@ -71,7 +68,7 @@ class BasicUnitTests {
 
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
-		assertEquals(finder.outputString, "String. Declarations found: 0; references found: 1.");
+		assertEquals("String. Declarations found: 0; references found: 1.", finder.outputString);
 		
 	}
 	
@@ -86,7 +83,7 @@ class BasicUnitTests {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals(finder.outputString, "Day. Declarations found: 1; references found: 2.");
+		assertEquals("Day. Declarations found: 1; references found: 2.", finder.outputString);
 		
 	}	
 	
@@ -100,13 +97,13 @@ class BasicUnitTests {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals(finder.outputString, "Vehicle. Declarations found: 1; references found: 3.");
+		assertEquals("Vehicle. Declarations found: 1; references found: 3.", finder.outputString);
 		
 	}
 	
 	
 	/**
-	 * Tests that the correct exception is thrown when passed 
+	 * Tests that the correct exception is thrown when passed an invalid directory.
 	 */
 	@Test
 	void testFalseDir() {
@@ -120,7 +117,7 @@ class BasicUnitTests {
 	
 	
 	/**
-	 * Tests that the correct output is given when the type is in multiple files.
+	 * Tests that the correct output is given when the java-type is in multiple files.
 	 */
 	@Test
 	void testMultipleFiles() {
@@ -129,12 +126,12 @@ class BasicUnitTests {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals(finder.outputString, "String. Declarations found: 0; references found: 6.");
+		assertEquals("String. Declarations found: 0; references found: 6.", finder.outputString);
 	}
 	
 	
 	/**
-	 * Tests that basic parameter in methods and initializers are counted correctly.
+	 * Tests that basic parameters in methods and initializers are counted correctly.
 	 */
 	@Test
 	void testParameters() {
@@ -143,7 +140,7 @@ class BasicUnitTests {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals(finder.outputString, "int. Declarations found: 0; references found: 8.");
+		assertEquals("int. Declarations found: 0; references found: 8.",  finder.outputString);
 	}
 	
 	
