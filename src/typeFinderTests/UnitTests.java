@@ -11,7 +11,6 @@ import mainFiles.*;
 class UnitTests {
 	
 	// BASEDIR should be the directory to the 'SENG300-Iteration1' folder
-	//private static String BASEDIR = "/home/andrew/Projects/SENG300-Iteration1"; 
 	private static String BASEDIR = "/Users/zachalbers/eclipse-workspace/SENG300-Iteration1"; 
 
 	
@@ -27,6 +26,7 @@ class UnitTests {
 			finder.run(args);
 		});	
 	}
+	
 	
 	/**
 	 * Tests that the correct exception is thrown when passed too many arguments
