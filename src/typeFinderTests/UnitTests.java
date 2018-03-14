@@ -139,8 +139,74 @@ class UnitTests {
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals("int. Declarations found: 0; references found: 8.",  finder.outputString);
+		assertEquals("int. Declarations found: 0; references found: 9.",  finder.outputString);
 	}
+	
+	/**
+	 * Tests that the correct output is given when the type is in an import statement.
+	 */
+	@Test
+	void testImport() {
+		String[] args = {BASEDIR + "/TestFiles/testDir5", "BufferedReader"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("BufferedReader. Declarations found: 0; references found: 3.", finder.outputString);
+	}
+	
+	/**
+	 * Tests that the correct output is given when the type is an exception used in a try-catch-statement.
+	 */
+	@Test
+	void testCatchExceptions() {
+		String[] args = {BASEDIR + "/TestFiles/testDir5", "IOException"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("IOException. Declarations found: 0; references found: 3.", finder.outputString);
+	}
+	
+	/**
+	 * Tests that the correct output is given when throwing a new exception.
+	 */
+	@Test
+	void testThrowNewExceptions() {
+		String[] args = {BASEDIR + "/TestFiles/testDir5", "IllegalArgumentException"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("IllegalArgumentException. Declarations found: 0; references found: 1.", finder.outputString);
+	}
+	
+	/**
+	 * Tests that the correct output is given when a method throws an exception.
+	 */
+	@Test
+	void testThrowsExceptions() {
+		String[] args = {BASEDIR + "/TestFiles/testDir5", "NullPointerException"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("NullPointerException. Declarations found: 0; references found: 1.", finder.outputString);
+	}
+	
+	/**
+	 * Tests that the correct output is given when a method throws an exception.
+	 */
+	@Test
+	void testReturnTypes() {
+		String[] args = {BASEDIR + "/TestFiles/testDir6", "Double"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("Double. Declarations found: 0; references found: 3.", finder.outputString);
+	}
+	
 	
 	
 	
@@ -211,10 +277,10 @@ class UnitTests {
 	
 	
 	/**
-	 * Tests that the correct output is given when the type is in an import statement.
+	 * Tests that the correct output is given when the type is in an import statement for full java-type names.
 	 */
 	@Test
-	void testImport() {
+	void testImportWithPackages() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.io.BufferedReader"};
 
 		TypeFinder finder = new TypeFinder();
@@ -224,10 +290,10 @@ class UnitTests {
 	}
 	
 	/**
-	 * Tests that the correct output is given when the type is an exception used in a try-catch-statement.
+	 * Tests that the correct output is given when the type is an exception used in a try-catch-statement for full java-type names.
 	 */
 	@Test
-	void testCatchExceptions() {
+	void testCatchExceptionsWithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.io.IOException"};
 
 		TypeFinder finder = new TypeFinder();
@@ -237,10 +303,10 @@ class UnitTests {
 	}
 
 	/**
-	 * Tests that the correct output is given when throwing a new exception.
+	 * Tests that the correct output is given when throwing a new exception for full java-type names.
 	 */
 	@Test
-	void testThrowNewExceptions() {
+	void testThrowNewExceptionsWithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.lang.IllegalArgumentException"};
 
 		TypeFinder finder = new TypeFinder();
@@ -250,16 +316,29 @@ class UnitTests {
 	}
 	
 	/**
-	 * Tests that the correct output is given when a method throws an exception.
+	 * Tests that the correct output is given when a method throws an exception for full java-type names.
 	 */
 	@Test
-	void testThrowsExceptions() {
+	void testThrowsExceptionsWithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.lang.NullPointerException"};
 
 		TypeFinder finder = new TypeFinder();
 		finder.run(args);
 		
-		assertEquals("java.lang.NullPointerException. Declarations found: 0; references found: 2.", finder.outputString);
+		assertEquals("java.lang.NullPointerException. Declarations found: 0; references found: 1.", finder.outputString);
+	}
+	
+	/**
+	 * Tests that the correct output is given when a method throws an exception for full java-type names.
+	 */
+	@Test
+	void testReturnTypeswithFullName() {
+		String[] args = {BASEDIR + "/TestFiles/testDir6", "Double"};
+
+		TypeFinder finder = new TypeFinder();
+		finder.run(args);
+		
+		assertEquals("Double. Declarations found: 0; references found: 3.", finder.outputString);
 	}
 	
 }
