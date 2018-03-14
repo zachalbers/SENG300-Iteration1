@@ -83,7 +83,7 @@ public class TypeFinder {
 
 		  
   
-		  
+
 			ASTParser parser = ASTParser.newParser(AST.JLS3);
 			parser.setCompilerOptions(options);
 			parser.setSource(str.toCharArray());
@@ -209,7 +209,7 @@ public class TypeFinder {
 					}
 				
 					for (Object o : node.parameters()) {
-						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;	
+						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;
 						if (containsPackage) {
 							IVariableBinding nodeBinding = svd.resolveBinding();
 							name = nodeBinding.getType().getQualifiedName();
@@ -223,13 +223,25 @@ public class TypeFinder {
 						}
 					}
 					
-					@SuppressWarnings("deprecation")
+
+					
+
 					List exceptions = node.thrownExceptions();
+					
 					for (Object e : exceptions) {
-						if (DEBUG) System.out.println(e.toString());
-						if (javaType.equals(e.toString())) referenceCount ++;
+						String exceptionName;
+						SimpleName svd = (SimpleName) e;
+						System.out.println(svd.resolveTypeBinding().getQualifiedName());
+		
+						if (containsPackage) {
+							exceptionName = svd.resolveTypeBinding().getQualifiedName();	
+						} else {
+							exceptionName = svd.resolveTypeBinding().getName();		
+						}
+						if (javaType.equals(exceptionName)) referenceCount ++;			
+						if (DEBUG) System.out.println("Exeption Reference Reference: " + name);
 					}
-//					
+					
 					return super.visit(node);
 				}
 				

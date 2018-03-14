@@ -10,12 +10,8 @@ class Test {
 
 	//Double var1 = 5.0;
 
-	public Double method1() {
-		try {
+	public Double method1() throws IllegalArgumentException{
 
-		} catch (IllegalArgumentException e) {
-			
-		}
 		return 3.14;
 	}
 
