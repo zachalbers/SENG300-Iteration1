@@ -1,5 +1,6 @@
 package mainFiles;
 import java.util.*;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -26,7 +27,6 @@ public class TypeFinder {
 		  
 		  TypeFinder finder = new TypeFinder();
 		  finder.run(args);
-
 	  }
 	  
 	  public void run(String[] args) {
@@ -311,11 +311,15 @@ public class TypeFinder {
 
 			File directory = new File(filePath);	  
 			File[] files = directory.listFiles(); 
+			
+			
 			if (files == null) throw new NullPointerException("Directory '" + directory +"' does not exist.");
 
 			  for (File i: files) {
 				  String currentFilePath = i.getAbsolutePath();
-				  if (i.isFile()) parse(readFile(currentFilePath));
+				  
+				  if (i.getName().endsWith(".java")) parse(readFile(currentFilePath));
+				  if (i.isDirectory()) parseDirectory(i.getAbsolutePath());
 			  	}	  
 	  	}
 	  
