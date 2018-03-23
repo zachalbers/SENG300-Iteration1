@@ -14,7 +14,7 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	
-	  boolean DEBUG = false;		// Prints out additional information for debugging purposes.
+	  boolean DEBUG = true;		// Prints out additional information for debugging purposes.
 
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
@@ -77,9 +77,12 @@ public class TypeFinder {
 					ITypeBinding nodeBinding = node.resolveBinding();
 					
 					if (containsPackage) {
-						if (nodeBinding.getPackage() != null) {
-							name = nodeBinding.getPackage().getName() + "." + name;
-						}
+							if (nodeBinding.getTypeDeclaration() != null) {
+								name = nodeBinding.getTypeDeclaration().getQualifiedName();
+							} else if (nodeBinding.getPackage() != null) {
+								name = nodeBinding.getPackage().getName() + "." + name;
+							}
+						
 					}
 						
 					if (javaType.equals(name)) declerationCount++;
@@ -120,7 +123,7 @@ public class TypeFinder {
 		
 				public boolean visit(VariableDeclarationFragment node) {
 					String name;
-					//if (node.resolveBinding() == null) return true;
+
 					if (containsPackage) {
 						name = node.resolveBinding().getType().getQualifiedName();
 					} else {

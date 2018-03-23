@@ -1,16 +1,11 @@
-class Test {
+package pack;
 
+class Outer {
 
-	// public static void main(String[] args) {
+    public void m() {
 
-        String x = "abc";
+        class Foo{}
 
+    }
 
-        class InTheTest {
-            
-        }
-
-        //String abc = new String("afasf");
-
-    // }
 }
