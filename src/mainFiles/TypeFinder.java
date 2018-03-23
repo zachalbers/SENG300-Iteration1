@@ -62,6 +62,7 @@ public class TypeFinder {
 		  parser.setSource(str.toCharArray());
 		  parser.setKind(ASTParser.K_COMPILATION_UNIT);
 		  parser.setResolveBindings(true);
+		  parser.setBindingsRecovery(true);
 		  parser.setEnvironment(null, null, null, true);
 		  parser.setUnitName("doesThisMatter.java");
 				 
@@ -119,10 +120,13 @@ public class TypeFinder {
 		
 				public boolean visit(VariableDeclarationFragment node) {
 					String name;
+					//if (node.resolveBinding() == null) return true;
 					if (containsPackage) {
 						name = node.resolveBinding().getType().getQualifiedName();
 					} else {
 						name = node.resolveBinding().getType().getName();
+
+						
 					}
 			
 					if (javaType.equals(name)) referenceCount++;
@@ -150,22 +154,30 @@ public class TypeFinder {
 				
 					
 				public boolean visit(MethodDeclaration node) {
+					
+
 					String name;
+
 					
 //					if (node.isConstructor()) {
 //						if (javaType.equals(node.getName().getFullyQualifiedName())) referenceCount++;
 //						if (DEBUG) System.out.println("Reference: " + node.getName().getFullyQualifiedName());
 //					}
+					
+				
 					IMethodBinding imb = node.resolveBinding();
+
 					if (containsPackage) {
 						name = imb.getReturnType().getQualifiedName();
 						if (javaType.equals(name)) referenceCount ++;
 						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
 					}
 					else {
+
 						name = imb.getReturnType().getName();
 						if (javaType.equals(name)) referenceCount ++;
 						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
+
 					}
 				
 					for (Object o : node.parameters()) {
@@ -196,8 +208,11 @@ public class TypeFinder {
 						if (javaType.equals(exceptionName)) referenceCount ++;			
 						if (DEBUG) System.out.println("Exeption Reference Reference: " + name);
 					}
-	
+					
+
 					return super.visit(node);
+				
+				
 				}
 				
 						
@@ -209,7 +224,7 @@ public class TypeFinder {
 					} else {
 						name = node.getType().toString();
 					}
-					
+
 					if (javaType.equals(name)) referenceCount++;
 					if (DEBUG) System.out.println("Instance Variable Reference: " + name);
 					
@@ -320,7 +335,7 @@ public class TypeFinder {
 				  String currentFilePath = i.getAbsolutePath();
 				  
 				  if (i.getName().endsWith(".java")) parse(readFile(currentFilePath));
-				  if (i.isDirectory()) parseDirectory(i.getAbsolutePath());
+				  //if (i.isDirectory()) parseDirectory(i.getAbsolutePath());
 			  	}	  
 	  	}
 	  
