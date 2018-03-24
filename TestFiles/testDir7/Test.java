@@ -1,11 +1,11 @@
 package pack;
 
-class Outer {
 
-    public void m() {
 
-        class Foo{}
+class Test {
 
+    public Test(int x) {
+        Test someTest = new Test();
     }
 
 }

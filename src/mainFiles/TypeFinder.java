@@ -14,7 +14,7 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	
-	  boolean DEBUG = false;		// Prints out additional information for debugging purposes.
+	  boolean DEBUG = true;		// Prints out additional information for debugging purposes.
 
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
@@ -160,15 +160,22 @@ public class TypeFinder {
 					
 
 					String name;
+					IMethodBinding imb = node.resolveBinding();
 
 					
-//					if (node.isConstructor()) {
-//						if (javaType.equals(node.getName().getFullyQualifiedName())) referenceCount++;
-//						if (DEBUG) System.out.println("Reference: " + node.getName().getFullyQualifiedName());
-//					}
+					if (node.isConstructor()) {
+						if (containsPackage) {
+							name = imb.getDeclaringClass().getQualifiedName();
+							if (javaType.equals(name)) referenceCount++;
+							if (DEBUG) System.out.println("Constructor Reference: " + name);
+						} else {
+							if (javaType.equals(node.getName().getFullyQualifiedName())) referenceCount++;
+							if (DEBUG) System.out.println("Constructor Reference: " + node.getName().getFullyQualifiedName());
+						}
+					}
 					
 				
-					IMethodBinding imb = node.resolveBinding();
+					
 
 					if (containsPackage) {
 						name = imb.getReturnType().getQualifiedName();
