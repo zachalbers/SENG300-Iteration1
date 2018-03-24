@@ -14,7 +14,7 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	
-	  boolean DEBUG = true;		// Prints out additional information for debugging purposes.
+	  boolean DEBUG = false;		// Prints out additional information for debugging purposes.
 
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
@@ -28,6 +28,7 @@ public class TypeFinder {
 		  
 		  TypeFinder finder = new TypeFinder();
 		  finder.run(args);
+		  finder.printAnswer();
 	  }
 	  
 	  public void run(String[] args) {
@@ -45,8 +46,11 @@ public class TypeFinder {
 		  	}
 	
 		outputString = javaType + ". Declarations found: " + declerationCount + "; references found: " + referenceCount + ".";
-		System.out.println(outputString);
-
+		if (DEBUG) System.out.println(outputString);
+	  }
+	  
+	  public void printAnswer() {
+		  if (!DEBUG) System.out.println(outputString);
 	  }
 	  
 	  
