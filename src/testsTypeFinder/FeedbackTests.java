@@ -1,12 +1,13 @@
-package typeFinderTests;
+package testsTypeFinder;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
-import org.junit.jupiter.api.Test;
+
+import org.junit.Test;
 
 import mainFiles.TypeFinder;
 
-class DownloadedTests {
+public class FeedbackTests {
 	
 	private static String BASEDIR = "/Users/zachalbers/eclipse-workspace/SENG300-Iteration1"; 
 
@@ -14,7 +15,7 @@ class DownloadedTests {
 	 * test1
 	 */
 	@Test
-	void test1() {
+	public void test1() {
 		String[] args = {BASEDIR + "/TestFiles/testDir8", "A"};
 
 
@@ -29,7 +30,7 @@ class DownloadedTests {
 	 * test2
 	 */
 	@Test
-	void test2() {
+	public void test2() {
 		String[] args = {BASEDIR + "/TestFiles/testDir8", "B"};
 
 
@@ -44,7 +45,7 @@ class DownloadedTests {
 	 * test3
 	 */
 	@Test
-	void test3() {
+	public void test3() {
 		String[] args = {BASEDIR + "/TestFiles/testDir8", "C"};
 
 
@@ -59,7 +60,7 @@ class DownloadedTests {
 	 * test4
 	 */
 	@Test
-	void test4() {
+	public void test4() {
 		String[] args = {BASEDIR + "/TestFiles/testDir8", "D"};
 
 
@@ -74,7 +75,7 @@ class DownloadedTests {
 	 * test5
 	 */
 	@Test
-	void test5() {
+	public void test5() {
 		String[] args = {BASEDIR + "/TestFiles/testDir8", "D.E"};
 
 
@@ -89,7 +90,7 @@ class DownloadedTests {
 	 * test6
 	 */
 	@Test
-	void test6() {
+	public void test6() {
 		String[] args = {BASEDIR + "/TestFiles/testDir8", "E"};
 
 
@@ -104,7 +105,7 @@ class DownloadedTests {
 	 * test7
 	 */
 	@Test
-	void test7() {
+	public void test7() {
 		String[] args = {BASEDIR + "/TestFiles/testDir8", "foo.E"};
 
 
@@ -119,7 +120,7 @@ class DownloadedTests {
 	 * test8
 	 */
 	@Test
-	void test8() {
+	public void test8() {
 		String[] args = {BASEDIR + "/TestFiles/testDir8", "F"};
 
 
@@ -134,7 +135,7 @@ class DownloadedTests {
 	 * test9
 	 */
 	@Test
-	void test9() {
+	public void test9() {
 		String[] args = {BASEDIR + "/TestFiles/testDir8", "int"};
 
 

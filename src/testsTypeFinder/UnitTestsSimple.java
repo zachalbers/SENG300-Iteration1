@@ -1,15 +1,13 @@
-package typeFinderTests;
+package testsTypeFinder;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.*;
 
-import mainFiles.*;
+import org.junit.Test;
 
+import mainFiles.TypeFinder;
 
+public class UnitTestsSimple {
 
-
-class UnitTests {
-	
 	// BASEDIR should be the directory to the 'SENG300-Iteration1' folder
 	private static String BASEDIR = "/Users/zachalbers/eclipse-workspace/SENG300-Iteration1"; 
 
@@ -17,28 +15,26 @@ class UnitTests {
 	/**
 	 * Tests that the correct exception is thrown when passed too few arguments
 	 */
-	@Test
-	void testTooFewArgs() {
+	@Test(expected = IllegalArgumentException.class)
+	public void testTooFewArgs() {
 		String[] args = {BASEDIR + "/TestFiles/testDir1"};
 		
-		assertThrows(IllegalArgumentException.class, () -> {
 			TypeFinder finder = new TypeFinder();
 			finder.run(args);
-		});	
+
 	}
 	
 	
 	/**
 	 * Tests that the correct exception is thrown when passed too many arguments
 	 */
-	@Test
-	void testTooManyArgs() {
+	@Test(expected = IllegalArgumentException.class)
+	public void testTooManyArgs() {
 		String[] args = {BASEDIR + "/TestFiles/testDir1"};
 		
-		assertThrows(IllegalArgumentException.class, () -> {
 			TypeFinder finder = new TypeFinder();
 			finder.run(args);
-		});	
+
 	}
 	
 	
@@ -46,7 +42,7 @@ class UnitTests {
 	 * Tests for the correct output when given an empty file.
 	 */
 	@Test
-	void testEmptyFile() {
+	public void testEmptyFile() {
 		String[] args = {BASEDIR + "/TestFiles/testDir1", "String"};
 
 
@@ -62,7 +58,7 @@ class UnitTests {
 	 * Tests for the correct output when given files with comments containing declarations and references.
 	 */
 	@Test
-	void testComments() {
+	public void testComments() {
 		String[] args = {BASEDIR + "/TestFiles/testDir2", "String"};
 
 		TypeFinder finder = new TypeFinder();
@@ -76,7 +72,7 @@ class UnitTests {
 	 * Tests for the correct output when given an enum with declarations and references.
 	 */
 	@Test
-	void testEnum() {
+	public void testEnum() {
 		String[] args = {BASEDIR + "/TestFiles/testDir3", "Day"};
 
 		TypeFinder finder = new TypeFinder();
@@ -90,7 +86,7 @@ class UnitTests {
 	 * Tests for the correct output when given a class with declarations and references.
 	 */
 	@Test
-	void testClasses() {
+	public void testClasses() {
 		String[] args = {BASEDIR + "/TestFiles/testDir3", "Vehicle"};
 
 		TypeFinder finder = new TypeFinder();
@@ -104,14 +100,12 @@ class UnitTests {
 	/**
 	 * Tests that the correct exception is thrown when passed an invalid directory.
 	 */
-	@Test
-	void testFalseDir() {
+	@Test(expected = NullPointerException.class)
+	public void testFalseDir() {
 		String[] args = {BASEDIR + "/TestFiles/NoDir", "Vehicle"};
 		
-		assertThrows(NullPointerException.class, () -> {
 			TypeFinder finder = new TypeFinder();
 			finder.run(args);
-		});	
 	}
 	
 	
@@ -119,7 +113,7 @@ class UnitTests {
 	 * Tests that the correct output is given when the java-type is in multiple files.
 	 */
 	@Test
-	void testMultipleFiles() {
+	public void testMultipleFiles() {
 		String[] args = {BASEDIR + "/TestFiles/testDir3", "String"};
 
 		TypeFinder finder = new TypeFinder();
@@ -133,7 +127,7 @@ class UnitTests {
 	 * Tests that basic parameters in methods and initializers are counted correctly.
 	 */
 	@Test
-	void testParameters() {
+	public void testParameters() {
 		String[] args = {BASEDIR + "/TestFiles/testDir4", "int"};
 
 		TypeFinder finder = new TypeFinder();
@@ -146,7 +140,7 @@ class UnitTests {
 	 * Tests that the correct output is given when the type is in an import statement.
 	 */
 	@Test
-	void testImport() {
+	public void testImport() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "BufferedReader"};
 
 		TypeFinder finder = new TypeFinder();
@@ -159,7 +153,7 @@ class UnitTests {
 	 * Tests that the correct output is given when the type is an exception used in a try-catch-statement.
 	 */
 	@Test
-	void testCatchExceptions() {
+	public void testCatchExceptions() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "IOException"};
 
 		TypeFinder finder = new TypeFinder();
@@ -172,7 +166,7 @@ class UnitTests {
 	 * Tests that the correct output is given when throwing a new exception.
 	 */
 	@Test
-	void testThrowNewExceptions() {
+	public void testThrowNewExceptions() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "IllegalArgumentException"};
 
 		TypeFinder finder = new TypeFinder();
@@ -185,7 +179,7 @@ class UnitTests {
 	 * Tests that the correct output is given when a method throws an exception.
 	 */
 	@Test
-	void testThrowsExceptions() {
+	public void testThrowsExceptions() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "NullPointerException"};
 
 		TypeFinder finder = new TypeFinder();
@@ -198,7 +192,7 @@ class UnitTests {
 	 * Tests that the correct output is given when a method throws an exception.
 	 */
 	@Test
-	void testReturnTypes() {
+	public void testReturnTypes() {
 		String[] args = {BASEDIR + "/TestFiles/testDir6", "Double"};
 
 		TypeFinder finder = new TypeFinder();
@@ -222,7 +216,7 @@ class UnitTests {
 	 * for full java-type names.
 	 */
 	@Test
-	void testCommentsWithFullName() {
+	public void testCommentsWithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir2", "java.lang.String"};
 
 		TypeFinder finder = new TypeFinder();
@@ -236,7 +230,7 @@ class UnitTests {
 	 * Tests for the correct output when given an enum with a full java-type name with declarations and references.
 	 */
 	@Test
-	void testEnumWithFullName() {
+	public void testEnumWithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir3", "package3.Vehicle.Day"};
 
 		TypeFinder finder = new TypeFinder();
@@ -250,7 +244,7 @@ class UnitTests {
 	 * Tests for the correct output when given a specific class with declarations and references.
 	 */
 	@Test
-	void testClassesWithFullName() {
+	public void testClassesWithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir3", "package3.Vehicle"};
 
 		TypeFinder finder = new TypeFinder();
@@ -266,7 +260,7 @@ class UnitTests {
 	 * Tests that the correct output is given when the type is in multiple files, but packages are different.
 	 */
 	@Test
-	void testMultiplePackages() {
+	public void testMultiplePackages() {
 		String[] args = {BASEDIR + "/TestFiles/testDir3", "package3.Person"};
 
 		TypeFinder finder = new TypeFinder();
@@ -280,7 +274,7 @@ class UnitTests {
 	 * Tests that the correct output is given when the type is in an import statement for full java-type names.
 	 */
 	@Test
-	void testImportWithPackages() {
+	public void testImportWithPackages() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.io.BufferedReader"};
 
 		TypeFinder finder = new TypeFinder();
@@ -293,7 +287,7 @@ class UnitTests {
 	 * Tests that the correct output is given when the type is an exception used in a try-catch-statement for full java-type names.
 	 */
 	@Test
-	void testCatchExceptionsWithFullName() {
+	public void testCatchExceptionsWithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.io.IOException"};
 
 		TypeFinder finder = new TypeFinder();
@@ -306,7 +300,7 @@ class UnitTests {
 	 * Tests that the correct output is given when throwing a new exception for full java-type names.
 	 */
 	@Test
-	void testThrowNewExceptionsWithFullName() {
+	public void testThrowNewExceptionsWithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.lang.IllegalArgumentException"};
 
 		TypeFinder finder = new TypeFinder();
@@ -319,7 +313,7 @@ class UnitTests {
 	 * Tests that the correct output is given when a method throws an exception for full java-type names.
 	 */
 	@Test
-	void testThrowsExceptionsWithFullName() {
+	public void testThrowsExceptionsWithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir5", "java.lang.NullPointerException"};
 
 		TypeFinder finder = new TypeFinder();
@@ -332,7 +326,7 @@ class UnitTests {
 	 * Tests that the correct output is given when a method throws an exception for full java-type names.
 	 */
 	@Test
-	void testReturnTypeswithFullName() {
+	public void testReturnTypeswithFullName() {
 		String[] args = {BASEDIR + "/TestFiles/testDir6", "Double"};
 
 		TypeFinder finder = new TypeFinder();
@@ -340,5 +334,5 @@ class UnitTests {
 		
 		assertEquals("Double. Declarations found: 0; references found: 3.", finder.outputString);
 	}
-	
+
 }
