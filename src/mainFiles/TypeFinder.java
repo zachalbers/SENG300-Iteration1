@@ -127,6 +127,7 @@ public class TypeFinder {
 					if (containsPackage) {
 							if (nodeBinding.getTypeDeclaration() != null) {
 								name = nodeBinding.getTypeDeclaration().getQualifiedName();
+								if (name.equals("")) name = node.getName().getFullyQualifiedName();
 							} else if (nodeBinding.getPackage() != null) {
 								name = nodeBinding.getPackage().getName() + "." + name;
 							}
@@ -369,11 +370,14 @@ public class TypeFinder {
 			  	// RELOOK AT SUPERCLASSTYPE VS .GETTYPEDECLERATION
 				public boolean visit(TypeDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
+
+					
 					ITypeBinding nodeBinding = node.resolveBinding();
 					
 
 					if (nodeBinding.getTypeDeclaration() != null) {
 						name = nodeBinding.getTypeDeclaration().getQualifiedName();
+						if (name.equals("")) name = node.getName().getFullyQualifiedName();
 					} else if (nodeBinding.getPackage() != null) {
 						name = nodeBinding.getPackage().getName() + "." + name;
 					}
