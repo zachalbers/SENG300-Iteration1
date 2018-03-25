@@ -578,8 +578,11 @@ public class TypeFinder {
 	  }
 	  
 	  public boolean equalsType(String nameBeingTested) {
+
 		  if (javaType.equals(nameBeingTested)) return true;
-		  if ( javaType.equals( nameBeingTested.substring(0, nameBeingTested.length()-2) ) ) return true;
+		  if (nameBeingTested.length() > 2) {
+			  if ( javaType.equals( nameBeingTested.substring(0, nameBeingTested.length()-2) ) ) return true;
+		  }
 		  return false;
 	  }
 	  
