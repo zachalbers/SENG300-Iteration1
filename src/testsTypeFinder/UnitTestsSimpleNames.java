@@ -131,7 +131,7 @@ public class UnitTestsSimpleNames {
 	  TypeFinder finder = new TypeFinder();
 	  finder.run(args);
 	  
-	  assertEquals("String. Declarations found: 0; references found: 6.", finder.outputString);
+	  assertEquals("String. Declarations found: 0; references found: 7.", finder.outputString);
 	}
 
 
