@@ -14,17 +14,16 @@ public class UnitTestsSimpleNames {
 	private static String BASEDIR = System.getProperty("user.dir");
 
 	
-	/**
+		/**
 	 * Tests that the correct exception is thrown when passed too few arguments
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testTooFewArgs() {
 
-	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir1"};
+	  String[] args = {};
 	  
 	    TypeFinder finder = new TypeFinder();
 	    finder.run(args);
-
 	}
 
 
@@ -33,14 +32,24 @@ public class UnitTestsSimpleNames {
 	 */
 	@Test(expected = IllegalArgumentException.class)
 	public void testTooManyArgs() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir1", "String", "int"};
+	  
+	    TypeFinder finder = new TypeFinder();
+	    finder.run(args);
+	}
+
+	/**
+	 * Tests that the correct exception is thrown when passed just the directory
+	 */
+	@Test
+	public void testJustDir() {
 	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir1"};
 	  
 	    TypeFinder finder = new TypeFinder();
 	    finder.run(args);
-
+	    assertNull(finder.outputString);
+	    assertNotNull(finder.allOutputStrings);
 	}
-
-
 	/**
 	 * Tests for the correct output when given an empty file.
 	 */
