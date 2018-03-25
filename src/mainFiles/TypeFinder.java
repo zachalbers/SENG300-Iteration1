@@ -9,6 +9,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.text.Collator;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.zip.ZipEntry;
@@ -64,7 +65,8 @@ public class TypeFinder {
 		  if (findAllTypes) {
 			  List<String> allTypesList = new ArrayList<String>();
 			  allTypesList.addAll(allTypes.keySet());
-			  java.util.Collections.sort(allTypesList);
+			  java.util.Collections.sort(allTypesList, Collator.getInstance());
+
 			  for (String name: allTypesList) {
 				  allOutputStrings.add(name + ". Declarations found: " + allTypes.get(name).get(0) + "; references found: " + allTypes.get(name).get(1) + ".");
 			  }
