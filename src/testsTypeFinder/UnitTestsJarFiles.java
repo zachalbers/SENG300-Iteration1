@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import mainFiles.TypeFinder;
 
-public class jarFileTests {
+public class UnitTestsJarFiles {
 	
 	// BASEDIR should be the directory to the 'SENG300-Iteration1' folder
 	private static String BASEDIR = System.getProperty("user.dir");
