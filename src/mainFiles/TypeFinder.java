@@ -42,6 +42,7 @@ public class TypeFinder {
 	  }
 	  
 	  public void run(String[] args) {
+		  
 
 		  if (args.length == 1) {
 			  directory = args[0];
@@ -405,9 +406,9 @@ public class TypeFinder {
 		
 				public boolean visit(VariableDeclarationFragment node) {
 					String name;
+					
 
 					name = node.resolveBinding().getType().getQualifiedName();
-	
 					addToCount(name, 0, 1);
 					if (DEBUG) System.out.println("Variable Reference: " + name);
 	
@@ -538,6 +539,26 @@ public class TypeFinder {
 					}
 					return false;
 				}
+//				public boolean visit(ParameterizedType node) {
+//					String name;
+//					
+//					ITypeBinding nodeBinding = node.resolveBinding();
+//					nodeBinding.getQualifiedName();
+//					
+//					System.out.println(nodeBinding.getName());
+//					
+//					//if (nodeBinding.getTypeParameters() != null) {
+//						for (ITypeBinding i : nodeBinding.getTypeParameters()) {
+//							System.out.println(i.getQualifiedName());
+//							System.out.println("hello");
+//							
+//						}
+//
+//					
+//					return false;
+//				}
+				
+				
 				
 				
 
@@ -545,12 +566,15 @@ public class TypeFinder {
 	  }
 	  
 	  public void addToCount(String typeName, int addDec, int addRef) {
+		  
 		  List<Integer> currentCount = allTypes.get(typeName);
 		  if (currentCount  == null) {
 			  allTypes.put(typeName, Arrays.asList(addDec, addRef));
 		  } else {
 			  allTypes.put(typeName, Arrays.asList(currentCount.get(0) + addDec, currentCount.get(1) + addRef));
-		  }	  
+		  }
+		  
+		  if (typeName.endsWith("[]")) addToCount (typeName.substring(0, typeName.length()-2), addDec, addRef);
 	  }
 	  
 	  
