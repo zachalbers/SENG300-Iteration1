@@ -343,7 +343,9 @@ public class TypeFinder {
 					
 					if (nodeBinding != null) {
 						if (containsPackage) {
+							
 							name = nodeBinding.getQualifiedName();
+							
 							if (javaType.equals(name)) referenceCount++;
 						} else {
 							name = nodeBinding.getName();
@@ -415,16 +417,17 @@ public class TypeFinder {
 				
 				public boolean visit(ImportDeclaration node) {
 					String name = node.getName().toString();
-					String[] importParts = name.split("\\.");
-					String[] typeParts = javaType.split("\\.");
-					
-						boolean match = true;
-						for (int i = 0; i < typeParts.length; i ++) {
-							if ((typeParts.length - i > 0 && importParts.length - i > 0)
-									&& !(typeParts[typeParts.length - (1 + i)].equals(importParts[importParts.length - (1 + i)]))) 
-									{ match = false;}
-						}
-						if (match) referenceCount++;
+					addToCount(name, 0, 1);
+//					String[] importParts = name.split("\\.");
+//					String[] typeParts = javaType.split("\\.");
+//					
+//						boolean match = true;
+//						for (int i = 0; i < typeParts.length; i ++) {
+//							if ((typeParts.length - i > 0 && importParts.length - i > 0)
+//									&& !(typeParts[typeParts.length - (1 + i)].equals(importParts[importParts.length - (1 + i)]))) 
+//									{ match = false;}
+//						}
+//						if (match) referenceCount++;
 
 					return super.visit(node);
 				}
@@ -461,14 +464,13 @@ public class TypeFinder {
 
 					}
 					
+
 					List exceptions = node.thrownExceptions();
 					
 					for (Object e : exceptions) {
 						String exceptionName;
 						SimpleName svd = (SimpleName) e;
-
 						exceptionName = svd.resolveTypeBinding().getQualifiedName();	
-
 						addToCount(name, 0, 1);			
 						if (DEBUG) System.out.println("Exeption Reference Reference: " + name);
 					}
@@ -533,7 +535,7 @@ public class TypeFinder {
 					ITypeBinding nodeBinding = node.getException().getType().resolveBinding();
 					
 					if (nodeBinding != null) {
-
+						
 						name = nodeBinding.getQualifiedName();
 						addToCount(name, 0, 1);
 

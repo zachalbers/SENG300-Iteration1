@@ -26,7 +26,7 @@ class Cube {
 		try {
 			continue;
 		}
-		catch (IOexception e) {
+		catch (IOException e) {
 			continue;
 		}
 		
