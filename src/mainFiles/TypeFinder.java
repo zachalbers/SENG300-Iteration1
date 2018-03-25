@@ -456,11 +456,10 @@ public class TypeFinder {
 				
 					for (Object o : node.parameters()) {
 						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;
-
-							IVariableBinding nodeBinding = svd.resolveBinding();
-							name = nodeBinding.getType().getQualifiedName();
-							addToCount(name, 0, 1);
-							if (DEBUG) System.out.println("Parameter Variable Reference: " + name);					
+						IVariableBinding nodeBinding = svd.resolveBinding();
+						name = nodeBinding.getType().getQualifiedName();
+						addToCount(name, 0, 1);
+						if (DEBUG) System.out.println("Parameter Variable Reference: " + name);					
 
 					}
 					
@@ -469,16 +468,12 @@ public class TypeFinder {
 					
 					for (Object e : exceptions) {
 						String exceptionName;
-						SimpleName svd = (SimpleName) e;
+						SimpleName svd = (SimpleName) e;				
 						exceptionName = svd.resolveTypeBinding().getQualifiedName();	
-						addToCount(name, 0, 1);			
+						addToCount(exceptionName, 0, 1);			
 						if (DEBUG) System.out.println("Exeption Reference Reference: " + name);
 					}
-					
-
 					return super.visit(node);
-				
-				
 				}
 				
 						
