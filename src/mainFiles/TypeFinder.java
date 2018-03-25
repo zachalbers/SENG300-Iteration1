@@ -4,9 +4,15 @@ import java.util.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Map;
+import java.io.InputStream;
+import java.net.URL;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipFile;
 
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.core.dom.*;
@@ -14,7 +20,7 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	
-	  boolean DEBUG = false;		// Prints out additional information for debugging purposes.
+	  boolean DEBUG = true;		// Prints out additional information for debugging purposes.
 
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
@@ -346,13 +352,54 @@ public class TypeFinder {
 			if (files == null) throw new NullPointerException("Directory '" + directory +"' does not exist.");
 
 			  for (File i: files) {
+
 				  String currentFilePath = i.getAbsolutePath();
 				  
+				  if (i.getName().endsWith(".jar")) {
+					  
+					  parseJarFile(i.getAbsolutePath());
+				  }
 				  if (i.getName().endsWith(".java")) parse(readFile(currentFilePath));
-				  //if (i.isDirectory()) parseDirectory(i.getAbsolutePath());
+				  if (i.isDirectory()) parseDirectory(i.getAbsolutePath());
 			  	}	  
 	  	}
 	  
+	  
+	  public void parseJarFile(String fileName) throws IOException {
+	  ZipFile zipFile = new ZipFile(fileName);
+	  Enumeration<? extends ZipEntry> entries = zipFile.entries();
 
+	  while (entries.hasMoreElements()) {
+          ZipEntry elem = entries.nextElement();    
 
+          if (elem.getName().endsWith(".java") || elem.getName().endsWith(".jar")) {
+        	  	
+        	  	InputStream classIs = zipFile.getInputStream(elem);
+        	  	File f = File.createTempFile(elem.getName(), null);
+        	  	f.deleteOnExit();
+        	  	FileOutputStream resourceOS = new FileOutputStream(f);
+
+        	  	InputStream classIS = zipFile.getInputStream(elem);
+
+        	  	byte[] byteArray = new byte[1024];
+        	  	int i;
+        	  	while ((i = classIS.read(byteArray)) > 0) {
+        	  		resourceOS.write(byteArray, 0, i);
+        	  	}
+        	  	classIS.close();
+        	  	resourceOS.close();
+        	  	
+        	  	if (elem.getName().endsWith(".java")) parse(readFile(f.getAbsolutePath()));
+        	  	else if (elem.getName().endsWith(".jar")) parseJarFile(f.getAbsolutePath());
+          }   
+
+	  	}
+	  	
+	  	zipFile.close();
+	  	
+	  }
+	  
+	  
+	  
+	  
 }
