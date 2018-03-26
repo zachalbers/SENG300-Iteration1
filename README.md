@@ -14,11 +14,12 @@ II. Developer Info
 Group: 16
 
 Members:
-   	1)Andrew Jamison - 10132190
-	 2)Bryan Lam - 
+   1)Andrew Jamison - 10132190
+	 2)Bryan Lam - 1010902 
 	 3)Zachariah Albers - 10175133
 	 4) Lisa Cho - 10108678
 	 5) Tariq Rahmani - 
+
      
    See git-log for information regarding commits. Further information can be found on https://github.com/zachalbers/SENG300-Iteration1 .
    

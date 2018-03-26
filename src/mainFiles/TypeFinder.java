@@ -42,6 +42,7 @@ public class TypeFinder {
 	  }
 	  
 	  public void run(String[] args) {
+		  
 
 		  if (args.length == 1) {
 			  directory = args[0];
@@ -126,6 +127,7 @@ public class TypeFinder {
 					if (containsPackage) {
 							if (nodeBinding.getTypeDeclaration() != null) {
 								name = nodeBinding.getTypeDeclaration().getQualifiedName();
+								if (name.equals("")) name = node.getName().getFullyQualifiedName();
 							} else if (nodeBinding.getPackage() != null) {
 								name = nodeBinding.getPackage().getName() + "." + name;
 							}
@@ -185,6 +187,22 @@ public class TypeFinder {
 					return super.visit(node);
 				}
 				
+				public boolean visit(ParameterizedType node) {
+					List<Type> args = node.typeArguments();
+					String name;
+					for (Type t : args) {
+						ITypeBinding itb = (ITypeBinding) t.resolveBinding();
+						if (containsPackage) {
+							name = itb.getQualifiedName(); 	
+						} else {
+							name = itb.getName();
+						}
+						if (javaType.equals(name)) referenceCount++;
+						
+						
+					}
+					return super.visit(node);
+				}
 				
 				public boolean visit(ImportDeclaration node) {
 					String name = node.getName().toString();
@@ -213,10 +231,10 @@ public class TypeFinder {
 					if (node.isConstructor()) {
 						if (containsPackage) {
 							name = imb.getDeclaringClass().getQualifiedName();
-							if (javaType.equals(name)) referenceCount++;
+							if (equalsType(name)) referenceCount++;
 							if (DEBUG) System.out.println("Constructor Reference: " + name);
 						} else {
-							if (javaType.equals(node.getName().getFullyQualifiedName())) referenceCount++;
+							if (equalsType(node.getName().getFullyQualifiedName())) referenceCount++;
 							if (DEBUG) System.out.println("Constructor Reference: " + node.getName().getFullyQualifiedName());
 						}
 					}
@@ -226,13 +244,13 @@ public class TypeFinder {
 
 					if (containsPackage) {
 						name = imb.getReturnType().getQualifiedName();
-						if (javaType.equals(name)) referenceCount ++;
+						if (equalsType(name)) referenceCount ++;
 						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
 					}
 					else {
 
 						name = imb.getReturnType().getName();
-						if (javaType.equals(name)) referenceCount ++;
+						if (equalsType(name)) referenceCount ++;
 						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
 
 					}
@@ -242,11 +260,11 @@ public class TypeFinder {
 						if (containsPackage) {
 							IVariableBinding nodeBinding = svd.resolveBinding();
 							name = nodeBinding.getType().getQualifiedName();
-							if (javaType.equals(name)) referenceCount++;
+							if (equalsType(name)) referenceCount++;
 							if (DEBUG) System.out.println("Parameter Variable Reference: " + name);					
 						} else {
 							name = svd.getType().toString();
-							if (javaType.equals(name)) referenceCount++;
+							if (equalsType(name)) referenceCount++;
 							if (DEBUG) System.out.println("Parameter Variable Reference: " + name);						
 						}
 					}
@@ -262,7 +280,7 @@ public class TypeFinder {
 						} else {
 							exceptionName = svd.resolveTypeBinding().getName();		
 						}
-						if (javaType.equals(exceptionName)) referenceCount ++;			
+						if (equalsType(exceptionName)) referenceCount ++;			
 						if (DEBUG) System.out.println("Exeption Reference Reference: " + name);
 					}
 					
@@ -282,7 +300,7 @@ public class TypeFinder {
 						name = node.getType().toString();
 					}
 
-					if (javaType.equals(name)) referenceCount++;
+					if (equalsType(name)) referenceCount++;
 					if (DEBUG) System.out.println("Instance Variable Reference: " + name);
 					
 					return false; // do not continue 
@@ -298,7 +316,7 @@ public class TypeFinder {
 						name = node.getName().getFullyQualifiedName();
 					}
 					
-					if (javaType.equals(name)) declerationCount++;	
+					if (equalsType(name)) declerationCount++;	
 					if (DEBUG) System.out.println("Declaration: " + name);
 					
 					return false; // do not continue 
@@ -313,7 +331,7 @@ public class TypeFinder {
 						name = node.getName().getFullyQualifiedName();
 					}
 					
-					if (javaType.equals(name)) declerationCount++;
+					if (equalsType(name)) declerationCount++;
 					if (DEBUG) System.out.println("Declaration: " + name);
 
 					
@@ -322,12 +340,12 @@ public class TypeFinder {
 						ITypeBinding[] interfaces = nodeBinding.getInterfaces();
 						if (containsPackage) {
 							for (ITypeBinding i : interfaces) {
-								if (javaType.equals(i.getQualifiedName())) referenceCount++;
+								if (equalsType(i.getQualifiedName())) referenceCount++;
 								if (DEBUG) System.out.println("implements Reference: " + i.getQualifiedName());
 							}
 						} else {
 							for (ITypeBinding i : interfaces) {
-								if (javaType.equals(i.getName())) referenceCount++;
+								if (equalsType(i.getName())) referenceCount++;
 								if (DEBUG) System.out.println("implements Reference: " + i.getName());
 							}
 						}
@@ -346,10 +364,10 @@ public class TypeFinder {
 							
 							name = nodeBinding.getQualifiedName();
 							
-							if (javaType.equals(name)) referenceCount++;
+							if (equalsType(name)) referenceCount++;
 						} else {
 							name = nodeBinding.getName();
-							if (javaType.equals(name)) referenceCount++;
+							if (equalsType(name)) referenceCount++;
 						}
 						if (DEBUG) System.out.println("Reference: "+ name);
 					}
@@ -368,11 +386,14 @@ public class TypeFinder {
 			  	// RELOOK AT SUPERCLASSTYPE VS .GETTYPEDECLERATION
 				public boolean visit(TypeDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
+
+					
 					ITypeBinding nodeBinding = node.resolveBinding();
 					
 
 					if (nodeBinding.getTypeDeclaration() != null) {
 						name = nodeBinding.getTypeDeclaration().getQualifiedName();
+						if (name.equals("")) name = node.getName().getFullyQualifiedName();
 					} else if (nodeBinding.getPackage() != null) {
 						name = nodeBinding.getPackage().getName() + "." + name;
 					}
@@ -405,9 +426,8 @@ public class TypeFinder {
 		
 				public boolean visit(VariableDeclarationFragment node) {
 					String name;
-
 					name = node.resolveBinding().getType().getQualifiedName();
-	
+					if (name.equals("")) name = node.resolveBinding().getType().getName();
 					addToCount(name, 0, 1);
 					if (DEBUG) System.out.println("Variable Reference: " + name);
 	
@@ -442,6 +462,7 @@ public class TypeFinder {
 					
 					if (node.isConstructor()) {
 							name = imb.getDeclaringClass().getQualifiedName();
+							if (name.equals("")) name = imb.getDeclaringClass().getName();
 							addToCount(name, 0, 1);
 							if (DEBUG) System.out.println("Constructor Reference: " + name);
 					}
@@ -450,17 +471,18 @@ public class TypeFinder {
 					
 					name = imb.getReturnType().getQualifiedName();
 					if (!name.equals("void")) {
+						if (name.equals("")) imb.getReturnType().getName();
 						addToCount(name, 0, 1);
 						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
 					}
 				
 					for (Object o : node.parameters()) {
 						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;
-
-							IVariableBinding nodeBinding = svd.resolveBinding();
-							name = nodeBinding.getType().getQualifiedName();
-							addToCount(name, 0, 1);
-							if (DEBUG) System.out.println("Parameter Variable Reference: " + name);					
+						IVariableBinding nodeBinding = svd.resolveBinding();
+						name = nodeBinding.getType().getQualifiedName();
+						if (name.equals("")) nodeBinding.getType().getName();
+						addToCount(name, 0, 1);
+						if (DEBUG) System.out.println("Parameter Variable Reference: " + name);					
 
 					}
 					
@@ -469,23 +491,20 @@ public class TypeFinder {
 					
 					for (Object e : exceptions) {
 						String exceptionName;
-						SimpleName svd = (SimpleName) e;
+						SimpleName svd = (SimpleName) e;				
 						exceptionName = svd.resolveTypeBinding().getQualifiedName();	
-						addToCount(name, 0, 1);			
+						addToCount(exceptionName, 0, 1);			
 						if (DEBUG) System.out.println("Exeption Reference Reference: " + name);
 					}
-					
-
 					return super.visit(node);
-				
-				
 				}
 				
 						
 				public boolean visit(ClassInstanceCreation node) {
 					String name;
 				
-					name = node.resolveTypeBinding().getQualifiedName();			
+					name = node.resolveTypeBinding().getQualifiedName();	
+					if (name.equals("")) name = node.resolveTypeBinding().getName();
 
 					addToCount(name, 0, 1);
 					if (DEBUG) System.out.println("Instance Variable Reference: " + name);
@@ -505,6 +524,16 @@ public class TypeFinder {
 					return false; // do not continue 
 				}
 				
+				public boolean visit(ParameterizedType node) {
+					List<Type> args = node.typeArguments();
+					String name;
+					for (Type t : args) {
+						ITypeBinding itb = (ITypeBinding) t.resolveBinding();
+						name = itb.getQualifiedName();
+						addToCount(name, 0, 1);
+					}
+					return super.visit(node);
+				}
 				
 				public boolean visit(EnumDeclaration node) {
 					String name;
@@ -543,6 +572,26 @@ public class TypeFinder {
 					}
 					return false;
 				}
+//				public boolean visit(ParameterizedType node) {
+//					String name;
+//					
+//					ITypeBinding nodeBinding = node.resolveBinding();
+//					nodeBinding.getQualifiedName();
+//					
+//					System.out.println(nodeBinding.getName());
+//					
+//					//if (nodeBinding.getTypeParameters() != null) {
+//						for (ITypeBinding i : nodeBinding.getTypeParameters()) {
+//							System.out.println(i.getQualifiedName());
+//							System.out.println("hello");
+//							
+//						}
+//
+//					
+//					return false;
+//				}
+				
+				
 				
 				
 
@@ -550,12 +599,24 @@ public class TypeFinder {
 	  }
 	  
 	  public void addToCount(String typeName, int addDec, int addRef) {
+		  
 		  List<Integer> currentCount = allTypes.get(typeName);
 		  if (currentCount  == null) {
 			  allTypes.put(typeName, Arrays.asList(addDec, addRef));
 		  } else {
 			  allTypes.put(typeName, Arrays.asList(currentCount.get(0) + addDec, currentCount.get(1) + addRef));
-		  }	  
+		  }
+		  
+		  if (typeName.endsWith("[]")) addToCount (typeName.substring(0, typeName.length()-2), addDec, addRef);
+	  }
+	  
+	  public boolean equalsType(String nameBeingTested) {
+
+		  if (javaType.equals(nameBeingTested)) return true;
+		  if (nameBeingTested.length() > 2) {
+			  if ( javaType.equals( nameBeingTested.substring(0, nameBeingTested.length()-2) ) ) return true;
+		  }
+		  return false;
 	  }
 	  
 	  
@@ -583,7 +644,9 @@ public class TypeFinder {
 	  
 	  
 	  public void parseDirectory(String filePath) throws IOException {
-
+		  
+		  	if (filePath.endsWith(".jar")) parseJarFile(filePath);
+		  	else {
 			File directory = new File(filePath);	  
 			File[] files = directory.listFiles(); 
 			
@@ -600,7 +663,8 @@ public class TypeFinder {
 				  }
 				  if (i.getName().endsWith(".java")) parse(readFile(currentFilePath));
 				  if (i.isDirectory()) parseDirectory(i.getAbsolutePath());
-			  	}	  
+			  	}	
+		  	}
 	  	}
 	  
 	  

@@ -1,5 +1,3 @@
-
-
 package pack;
 
 
@@ -11,7 +9,5 @@ class Test {
         InnerClass someName = new InnerClass();
       }
     }
-
-}
 
 }
