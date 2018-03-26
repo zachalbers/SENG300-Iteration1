@@ -65,7 +65,19 @@ public class UnitTestsSimpleNames {
 	  
 	}
 
-
+	/**
+	 * Tests that the correct output is given when file is in a bunch of directories.
+	 * used to test recusrive function
+	 */
+	@Test
+	public void testRecursiveDir() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir18", "int"};
+	  
+	    TypeFinder finder = new TypeFinder();
+	    finder.run(args);
+	    assertEquals("int. Declarations found: 0; references found: 9.", finder.outputString);
+	}
+	
 	/**
 	 * Tests for the correct output when given files with comments containing declarations and references.
 	 */
