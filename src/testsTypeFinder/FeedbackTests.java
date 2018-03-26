@@ -99,7 +99,7 @@ public class FeedbackTests {
 
 	  TypeFinder finder = new TypeFinder();
 	  finder.run(args);
-	  assertEquals("E. Declarations found: 0; references found: 0.", finder.outputString);
+	  assertEquals("E. Declarations found: 2; references found: 5.", finder.outputString);
 	  
 	}
 

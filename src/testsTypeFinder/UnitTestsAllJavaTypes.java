@@ -13,12 +13,14 @@ import mainFiles.TypeFinder;
 public class UnitTestsAllJavaTypes {
 	// BASEDIR should be the directory to the 'SENG300-Iteration1' folder
 	private static String BASEDIR = System.getProperty("user.dir");
+	
+	
 	/**
-	 * Tests for the correct output when given files with comments containing declarations and references
-	 * for full java-type names.
+	 * Tests for the correct output when given files with multiple types, including Arrays
+	 * 
 	 */
 	@Test
-	public void testCommentsWithFullName() {
+	public void testParameterizedType() {
 	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testAllJavaTypes"};
 	  
 	  List<String> correctOutput = new ArrayList<String>();
@@ -39,7 +41,7 @@ public class UnitTestsAllJavaTypes {
 	 * Tests for the correct output when given files with comments containing declarations and references and given only the directory
 	 */
 	@Test
-	public void testCommentsAll() {
+	public void testAllTypesSimple() {
 	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir2"};
 	  
 	  List<String> correctOutput = new ArrayList<String>();
@@ -56,7 +58,7 @@ public class UnitTestsAllJavaTypes {
 	 * Tests for the correct output giving a directory containing a jarFile that contains a jarfile + directories when only given a directory
 	 */
 	@Test
-	public void testRecusiveJarAll() {
+	public void testRecursiveJarAll() {
 	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir11"};
 	  
 	  List<String> correctOutput = new ArrayList<String>();
@@ -72,9 +74,43 @@ public class UnitTestsAllJavaTypes {
 	  assertEquals(correctOutput,  finder.allOutputStrings);
 	}
 	
+	/**
+	 * Tests for the correct output giving a directory containing no java files
+	 */
 	@Test
-	public void testParameterizedType() {
-		String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testAllJavaTypes"};
-		
+	public void testAllTypesWithEmptyDir() {
+		  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir1"};
+		  
+		  List<String> correctOutput = new ArrayList<String>();
+
+		  
+		  TypeFinder finder = new TypeFinder();
+		  finder.run(args);
+		  assertEquals(correctOutput,  finder.allOutputStrings);
+		}
+	
+	/**
+	 * Tests for the correct output giving a directory containing Exceptions, Integers, Strings, String[], ArrayLists, Classes,
+	 * Class Constructors, Method parameters, Import statements, and catch statements.
+	 */
+	@Test
+	public void testJarAllTypes() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir4"};
+	  
+	  List<String> correctOutput = new ArrayList<String>();
+	  correctOutput.add("int. Declarations found: 0; references found: 9.");
+	  correctOutput.add("java.io.IOException. Declarations found: 0; references found: 3.");
+	  correctOutput.add("java.lang.Integer. Declarations found: 0; references found: 1.");
+	  correctOutput.add("java.lang.String. Declarations found: 0; references found: 2.");
+	  correctOutput.add("java.lang.String[]. Declarations found: 0; references found: 1.");
+	  correctOutput.add("package4.ArrayList. Declarations found: 0; references found: 2.");
+	  correctOutput.add("package4.Cube. Declarations found: 1; references found: 2.");
+	  
+	  TypeFinder finder = new TypeFinder();
+	  finder.run(args);
+	  assertEquals(correctOutput,  finder.allOutputStrings);
 	}
+	
+	
+
 }
