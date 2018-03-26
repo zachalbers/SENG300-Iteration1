@@ -108,7 +108,77 @@ public class UnitTestsSimpleNames {
 	  
 	}
 
+	/**
+	 * Tests for the correct output when given an annotation with declarations and references
+	 */
+	@Test
+	public void testAnnotation() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir14", "annotation"};
 
+	  TypeFinder finder = new TypeFinder();
+	  finder.run(args);
+
+	  assertEquals("annotation. Declarations found: 1; references found: 1.", finder.outputString);
+	  
+	}
+
+	/**
+	 * Tests for the correct output when given an Inner Class with declarations and references
+	 */
+	@Test
+	public void testInnerClass() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir15", "InnerClass"};
+
+	  TypeFinder finder = new TypeFinder();
+	  finder.run(args);
+
+	  assertEquals("InnerClass. Declarations found: 1; references found: 2.", finder.outputString);
+	  
+	}
+	
+	/**
+	 * Tests for the correct output when given an Nested Class with declarations and references
+	 */
+	@Test
+	public void testNestedClass() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir16", "NestedClass"};
+
+	  TypeFinder finder = new TypeFinder();
+	  finder.run(args);
+	  
+	  assertEquals("NestedClass. Declarations found: 1; references found: 2.", finder.outputString);
+	  
+	}
+	
+	/**
+	 * Tests for the correct output when given an Constructor with declarations and references
+	 */
+	@Test
+	public void testConstructor() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir17", "Test"};
+
+	  TypeFinder finder = new TypeFinder();
+	  finder.run(args);
+	  
+	  assertEquals("Test. Declarations found: 1; references found: 3.", finder.outputString);
+	  
+	}
+	
+	/**
+	 * Tests for the correct output when given a directory where there is no java file (in this case there is one java file that is empty)
+	 * But it shouldn't affect this test
+	 */
+	@Test
+	public void testNotJavaFile() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir1", "int"};
+
+	  TypeFinder finder = new TypeFinder();
+	  finder.run(args);
+	  
+	  assertEquals("int. Declarations found: 0; references found: 0.", finder.outputString);
+	  
+	}
+	
 	/**
 	 * Tests that the correct exception is thrown when passed an invalid directory.
 	 */
