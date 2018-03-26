@@ -23,6 +23,8 @@ class Cube {
 
 	public int method1(int var1) throws IOException{
 		int var2 = var1;
+		ArrayList<Integer> dave = new ArrayList<Integer>();
+		String[] bob;
 		try {
 			continue;
 		}

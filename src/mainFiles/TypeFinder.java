@@ -21,7 +21,7 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	
-	  boolean DEBUG = true;		// Prints out additional information for debugging purposes.
+	  boolean DEBUG = false;		// Prints out additional information for debugging purposes.
 
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
@@ -187,6 +187,22 @@ public class TypeFinder {
 					return super.visit(node);
 				}
 				
+				public boolean visit(ParameterizedType node) {
+					List<Type> args = node.typeArguments();
+					String name;
+					for (Type t : args) {
+						ITypeBinding itb = (ITypeBinding) t.resolveBinding();
+						if (containsPackage) {
+							name = itb.getQualifiedName(); 	
+						} else {
+							name = itb.getName();
+						}
+						if (javaType.equals(name)) referenceCount++;
+						
+						
+					}
+					return super.visit(node);
+				}
 				
 				public boolean visit(ImportDeclaration node) {
 					String name = node.getName().toString();
@@ -410,8 +426,6 @@ public class TypeFinder {
 		
 				public boolean visit(VariableDeclarationFragment node) {
 					String name;
-					
-
 					name = node.resolveBinding().getType().getQualifiedName();
 					if (name.equals("")) name = node.resolveBinding().getType().getName();
 					addToCount(name, 0, 1);
@@ -510,6 +524,16 @@ public class TypeFinder {
 					return false; // do not continue 
 				}
 				
+				public boolean visit(ParameterizedType node) {
+					List<Type> args = node.typeArguments();
+					String name;
+					for (Type t : args) {
+						ITypeBinding itb = (ITypeBinding) t.resolveBinding();
+						name = itb.getQualifiedName();
+						addToCount(name, 0, 1);
+					}
+					return super.visit(node);
+				}
 				
 				public boolean visit(EnumDeclaration node) {
 					String name;
