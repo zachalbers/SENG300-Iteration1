@@ -1,12 +1,17 @@
-package F;
 
-class SomeClass {
-  String x = "abc";
 
-  void someMethod() {
-    class anotherClass {
-      
+package pack;
+
+
+
+class Test {
+
+    public void someMethod() {
+      class InnerClass {
+        InnerClass someName = new InnerClass();
+      }
     }
-  }
+
+}
 
 }

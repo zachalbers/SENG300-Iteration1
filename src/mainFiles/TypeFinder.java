@@ -413,6 +413,7 @@ public class TypeFinder {
 					
 
 					name = node.resolveBinding().getType().getQualifiedName();
+					if (name.equals("")) name = node.resolveBinding().getType().getName();
 					addToCount(name, 0, 1);
 					if (DEBUG) System.out.println("Variable Reference: " + name);
 	
@@ -447,6 +448,7 @@ public class TypeFinder {
 					
 					if (node.isConstructor()) {
 							name = imb.getDeclaringClass().getQualifiedName();
+							if (name.equals("")) name = imb.getDeclaringClass().getName();
 							addToCount(name, 0, 1);
 							if (DEBUG) System.out.println("Constructor Reference: " + name);
 					}
@@ -455,6 +457,7 @@ public class TypeFinder {
 					
 					name = imb.getReturnType().getQualifiedName();
 					if (!name.equals("void")) {
+						if (name.equals("")) imb.getReturnType().getName();
 						addToCount(name, 0, 1);
 						if (DEBUG) System.out.println("Method Return Type Reference: " + name);
 					}
@@ -463,6 +466,7 @@ public class TypeFinder {
 						SingleVariableDeclaration svd = (SingleVariableDeclaration) o;
 						IVariableBinding nodeBinding = svd.resolveBinding();
 						name = nodeBinding.getType().getQualifiedName();
+						if (name.equals("")) nodeBinding.getType().getName();
 						addToCount(name, 0, 1);
 						if (DEBUG) System.out.println("Parameter Variable Reference: " + name);					
 
@@ -485,7 +489,8 @@ public class TypeFinder {
 				public boolean visit(ClassInstanceCreation node) {
 					String name;
 				
-					name = node.resolveTypeBinding().getQualifiedName();			
+					name = node.resolveTypeBinding().getQualifiedName();	
+					if (name.equals("")) name = node.resolveTypeBinding().getName();
 
 					addToCount(name, 0, 1);
 					if (DEBUG) System.out.println("Instance Variable Reference: " + name);
