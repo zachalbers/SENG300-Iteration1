@@ -17,7 +17,7 @@ public class UnitTestsJarFiles {
 	 * The following tests are analogous to "UnitTestsSimpleNames" but for is testing jar files
 	 */
 	
-		/**
+	/**
 	 * Test for correct declaration and reference count given the directory path is directly to a jar file for int
 	 */
 	@Test
@@ -27,6 +27,34 @@ public class UnitTestsJarFiles {
 	  TypeFinder finder = new TypeFinder();
 	  finder.run(args);
 	  assertEquals("int. Declarations found: 0; references found: 1.", finder.outputString);
+	}
+	
+	/**
+	 * Tests that the correct output is given when the java-type is in jar file that is in a jar file
+	 * Used to test the recursive function
+	 */
+	@Test
+	public void testRecursiveJar() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir11", "int"};
+
+	  TypeFinder finder = new TypeFinder();
+	  finder.run(args);
+	  
+	  assertEquals("int. Declarations found: 0; references found: 2.", finder.outputString);
+	}
+	
+	/**
+	 * Tests that the correct output is given when the java-type is in a jar file and in a directory
+	 * Used to test the recursive function
+	 */
+	@Test
+	public void testRecursiveDirectoryJar() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir11", "TestClass3"};
+
+	  TypeFinder finder = new TypeFinder();
+	  finder.run(args);
+	  
+	  assertEquals("TestClass3. Declarations found: 1; references found: 2.", finder.outputString);
 	}
 	
 	
