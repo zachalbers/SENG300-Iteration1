@@ -1,0 +1,439 @@
+commit b6ef587279723bcb46e01e7af8a0cf1a5fe80fed
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Mon Mar 26 00:51:08 2018 -0600
+
+    Final tests for all java types
+
+commit 3d4eb2f4fff68a87c2b66719f872797ee5ce3b1c
+Merge: 28b15a0 010a864
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Mon Mar 26 00:28:14 2018 -0600
+
+    Merge pull request #16 from zachalbers/bryanlam549-patch-9
+    
+    Update UnitTestsAllJavaTypes.java
+
+commit 010a864cd099530f9b0db90f4af7dda5f697e441
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Mon Mar 26 00:27:03 2018 -0600
+
+    Update UnitTestsAllJavaTypes.java
+    
+    Recursive + commented declaration/references test cases added
+
+commit 28b15a01283495bba457de362bdb23064cf3a3e8
+Merge: 7f4ae85 2d4165a
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Mon Mar 26 00:21:04 2018 -0600
+
+    Merge branch 'master' of https://github.com/zachalbers/SENG300-Iteration1
+
+commit 7f4ae85f3cc949c7aeb7adf8fdc7267f5c4e9d9c
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Mon Mar 26 00:20:54 2018 -0600
+
+    added paramaterized type testing to UnitTestAllJavaTypes test
+
+commit 2d4165a9f6edb05343a53f73e33793812a838319
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Mon Mar 26 00:01:42 2018 -0600
+
+    runs All javatype tests as well
+
+commit 5ee38fe03df82d38f2a2ee41b394c70d36f4cb12
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 23:54:20 2018 -0600
+
+    support for getting array types
+
+commit 6a6ef14c6a481cdf3299107770deca49bb4a3ad4
+Merge: 3caaecd 6babcfb
+Author: Zachariah Albers <back2zach2@gmail.com>
+Date:   Sun Mar 25 23:14:54 2018 -0600
+
+    Merge pull request #15 from zachalbers/modelsAndExplanationUpdated
+    
+    Models and explanation are updated
+
+commit 6babcfb7f0845ea263519d68ed14b4e68e47ab46
+Merge: 13cdefb 3caaecd
+Author: Zachariah Albers <back2zach2@gmail.com>
+Date:   Sun Mar 25 23:14:07 2018 -0600
+
+    Merge branch 'master' into modelsAndExplanationUpdated
+
+commit 13cdefb45a667a3831bdd92ca9144000b63d6f0f
+Author: Lisa Cho <lisakycho@gmail.com>
+Date:   Sun Mar 25 22:29:36 2018 -0600
+
+    Models and explanation are updated
+
+commit 3caaecd50b224f301c4cb9616b5cd5163a38eceb
+Merge: 1cc569d 6b949b0
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 22:02:57 2018 -0600
+
+    Merge pull request #14 from zachalbers/bryanlam549-patch-9
+    
+    Update UnitTestsSimpleNames.java
+
+commit 6b949b034dbd4bc28e697bb63a184ad75989bd22
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 22:02:34 2018 -0600
+
+    Update UnitTestsSimpleNames.java
+
+commit 1cc569de73277bc408cbfd638b6a219404bd7cbb
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 22:00:12 2018 -0600
+
+    Update UnitTestsJarFiles.java
+    
+    added test case for recursive jar files and recursive directories in jar files
+
+commit 20952be51c4bafecd8cd720ac896e3378f567310
+Merge: 9ecc50b a82a98b
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:58:46 2018 -0600
+
+    Merge pull request #13 from zachalbers/bryanlam549-patch-9
+    
+    Add files via upload
+
+commit a82a98b23ff14ccc025f544bf48c2760076705a9
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:58:34 2018 -0600
+
+    Add files via upload
+
+commit 9ecc50b95d8096d22388e00da538d7f8a7a18929
+Merge: 29bccc4 eeb7425
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:58:13 2018 -0600
+
+    Merge pull request #12 from zachalbers/bryanlam549-patch-9
+    
+    Add files via upload
+
+commit eeb7425a569d647c1b3f3cfebe79f0c5f5573a25
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:58:01 2018 -0600
+
+    Add files via upload
+
+commit 29bccc45f63eab0449d7eb50042e161cb7b6d06e
+Merge: 75f6afa e9dc77b
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 25 21:47:07 2018 -0600
+
+    Merge branch 'master' of https://github.com/zachalbers/SENG300-Iteration1
+
+commit 75f6afa21379c94fc896d65b16eba6714a98ccd7
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 25 21:46:48 2018 -0600
+
+    added ParameterizedType visit method
+
+commit e9dc77bfe3bf6dafdfadb2f33fd284546403c08a
+Merge: 3c1916a a43ccdf
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:27:54 2018 -0600
+
+    Merge pull request #11 from zachalbers/bryanlam549-patch-8
+    
+    Update UnitTestsJarFiles.java
+
+commit a43ccdf1c98ae9e285c36e9135cc51ada9e8151d
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:27:25 2018 -0600
+
+    Update UnitTestsJarFiles.java
+    
+    added test case for when path is directly to Jar file
+
+commit 3c1916a1a1feda848b75d99ae6fb150e407a8190
+Merge: 847a8ae ab0fdd8
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:22:26 2018 -0600
+
+    Merge pull request #10 from zachalbers/bryanlam549-patch-8
+    
+    Add files via upload
+
+commit ab0fdd8017fdc15cd8ff495645ba05cc59e000d0
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:22:15 2018 -0600
+
+    Add files via upload
+
+commit 847a8ae503fa727b52bdf4255afba3f31d221db4
+Merge: 06bf42a fc85f25
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:21:22 2018 -0600
+
+    Merge pull request #9 from zachalbers/bryanlam549-patch-7
+    
+    Update UnitTestsSimpleNames.java
+
+commit fc85f250eb75d8f513d7ed30e876c22f3fbe30ae
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:20:16 2018 -0600
+
+    Update UnitTestsSimpleNames.java
+    
+    Added Annotation, InnerClass, NestedClass, Constructor and Not a Java File test units
+
+commit 06bf42a59d3a4ba7d94d2f49ed22d18f7e2d44bc
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 21:18:35 2018 -0600
+
+    Update README.md
+
+commit b0ec6957395cc709be4f901296b50d6e0a904f1c
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 20:30:48 2018 -0600
+
+    Simple test cases for testing all java types in a folder
+
+commit e79a43f0cfc92e45ddd53a6b3103490afa031730
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 18:27:53 2018 -0600
+
+    fixed inner class
+
+commit af49e20ac756ca6d422b68404882d5500e368ebb
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 18:01:17 2018 -0600
+
+    added support for parsing a jar directly
+
+commit 2ef7b7d08f93db453772bf9b3ea73b7c98637ec5
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 15:53:11 2018 -0600
+
+    fixed implementation for inner classes
+
+commit 84310c0abce1ef954206bc5a433207bd12118186
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 15:44:20 2018 -0600
+
+    type name length can't be less than 3
+
+commit ea55154c570947e203b330daeea33fd0c7d8258b
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 15:21:30 2018 -0600
+
+    This tests case now finds String[]
+
+commit 63acdac71e71cd526f6c7d053cac40f57d5db7f5
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 15:18:56 2018 -0600
+
+    array type fix for input with only one arg
+
+commit 4da87b387a789b0509e69ca122a3f9bcabebfcc1
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 15:00:55 2018 -0600
+
+    Adds array types to normal types
+
+commit 6b0eccd6c5b0f319401e736e5a7327a3b332a1d5
+Merge: b5e077b 51ab95b
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 14:50:23 2018 -0600
+
+    Merge pull request #8 from zachalbers/bryanlam549-patch-6
+    
+    Update AllTests.java
+
+commit 51ab95b75d08ef63f4f1d9d94a159092c4333528
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 14:50:13 2018 -0600
+
+    Update AllTests.java
+
+commit b5e077b21706b87b7e5c0504aeb1af69f29ea870
+Merge: be488a2 45170b8
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 14:48:29 2018 -0600
+
+    Merge pull request #7 from zachalbers/bryanlam549-patch-5
+    
+    Update UnitTestsSimpleNames.java
+
+commit 45170b853023cc298ea44f67bb32f9343cfadf35
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 14:43:53 2018 -0600
+
+    Update UnitTestsSimpleNames.java
+
+commit be488a25f8641d4630685785982db9d6a9e68427
+Merge: e57d27a 39e9914
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 14:40:06 2018 -0600
+
+    Merge pull request #6 from zachalbers/bryanlam549-patch-4
+    
+    Update and rename jarFileTests.java to UnitTestsJarFiles.java
+
+commit 39e99145a7d97f4c54a2c96887fa7f991a25e8d3
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 14:39:54 2018 -0600
+
+    Update and rename jarFileTests.java to UnitTestsJarFiles.java
+    
+    Added test cases analogous to unit tests for simplenames/qualifiednames
+
+commit e57d27a729ed1529c0c76383e02ebe3e607fcaec
+Merge: 7eef3e0 56596eb
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 14:37:08 2018 -0600
+
+    Merge pull request #5 from zachalbers/bryanlam549-patch-4
+    
+    Add files via upload
+
+commit 56596eba367152fef011c6824d5300bff05467b2
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sun Mar 25 14:36:30 2018 -0600
+
+    Add files via upload
+
+commit 7eef3e03599c4952ceaa7e54bbab10f31ac97ac0
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 25 14:03:39 2018 -0600
+
+    fixed thrown exceptions in visitAllNodes
+
+commit 08c4d50c3ae21d8e5a69f89da4a2d1765537cd7c
+Author: Andrew Jamison <andrew.jamison27@gmail.com>
+Date:   Sun Mar 25 13:46:09 2018 -0600
+
+    fixed ImportDeclaration visit method for vistAllNodes
+
+commit 1fe1b519271d27ed69de50a1425e4c4131d2c974
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 01:15:44 2018 -0600
+
+    sorts output string alphabetically
+
+commit 059e99e845fd16e8cc7b4be7e35d7a278bff5749
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sun Mar 25 01:11:37 2018 -0600
+
+    Added support for retreiving all java types
+
+commit 194487565be8b5a9ca6b8e90ad630f18407dc50f
+Merge: 5da95d3 b91d8af
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sat Mar 24 22:47:09 2018 -0600
+
+    Merge pull request #4 from zachalbers/bryanlam549-patch-3
+    
+    Unit Tests for Jar Files
+
+commit b91d8af9efad21aaa913df8beffe209ebf67f5d1
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sat Mar 24 22:46:50 2018 -0600
+
+    Unit Tests for Jar Files
+
+commit 5da95d362d9297893c0307b37da0b6c23eb2eac1
+Merge: e2e6286 e0dcf97
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sat Mar 24 22:45:17 2018 -0600
+
+    Merge pull request #3 from zachalbers/bryanlam549-patch-2
+    
+    Add files via upload
+
+commit e0dcf97377b563c60e23c6e9f234869185013c58
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Sat Mar 24 22:45:02 2018 -0600
+
+    Add files via upload
+
+commit e2e628643e86a4c1c5ac1aec98bbeb7c30454077
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 24 20:46:21 2018 -0600
+
+    code for recursive jar file searching
+
+commit 7092f78ecc081247b6f6a1fe71bc706f2062a271
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 24 17:32:36 2018 -0600
+
+    Changed logic so that it won't print answers when running test cases
+
+commit 6c62d254756462ca19f95fdc789e9415aed81441
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 24 17:24:02 2018 -0600
+
+    Test code for edge cases
+
+commit 5603e4e20aac07fd0a88b2e6a2706a7fdfaa21b8
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 24 17:18:09 2018 -0600
+
+    Support for class constructors
+
+commit b99019caec5f7686cf3f69449a766249d28d08ce
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 24 17:01:28 2018 -0600
+
+    added support for cross-system directory testing. No need to change directory name
+
+commit c794b0d0c26137137a6e9260704d90a6c1ab8825
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Sat Mar 24 13:16:40 2018 -0600
+
+    Converted Junit 5 tests to Junit 4, for ease of use
+
+commit f4761b908c723571956fe10fbaff5bd0fff8c6ac
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Fri Mar 23 13:46:03 2018 -0600
+
+    Checklist
+
+commit 9afd08cff247a5ee9ffce40252bc5493aa93021f
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Fri Mar 23 13:34:54 2018 -0600
+
+    Fix for test case 5
+
+commit 1629e1f07d6fe5101a793914edadbbd07fa1f64e
+Author: zachalbers <back2zach2@gmail.com>
+Date:   Thu Mar 22 23:44:19 2018 -0600
+
+    added fixes for partial bindings. added example test cases from D2L
+
+commit 2e757b1d576644921cc1536aabcef70de532c625
+Author: tariq rahmani <tariqrahmani08@gmail.com>
+Date:   Wed Mar 21 13:35:41 2018 -0600
+
+    added my version
+
+commit 88a6f7a026a420505a570480dd3b1e283a4eca73
+Merge: 9ef0625 3ed9d38
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Wed Mar 21 00:15:16 2018 -0600
+
+    Merge pull request #2 from zachalbers/bryanlam549-patch-1
+    
+    Recursively parse directory + parsing .java fix
+
+commit 9ef06259a239f09d98fa044a1823112325ab514b
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Wed Mar 21 00:14:00 2018 -0600
+
+    Update TypeFinder.java
+    
+    I noticed we parse everything that is a file rather than JUST java files. So i made a minor fixed.
+
+commit 3ed9d3892eb90254b93f56fc282da9a6864c5db3
+Author: bryanlam549 <35572599+bryanlam549@users.noreply.github.com>
+Date:   Wed Mar 21 00:13:21 2018 -0600
+
+    Recursively parse directory + parsing .java fix
+    
+    I noticed we parse everything that is a file rather than JUST java files. So i made a minor fixed.
