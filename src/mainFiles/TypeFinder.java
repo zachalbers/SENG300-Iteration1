@@ -615,7 +615,9 @@ public class TypeFinder {
 	  
 	  
 	  public void parseDirectory(String filePath) throws IOException {
-
+		  
+		  	if (filePath.endsWith(".jar")) parseJarFile(filePath);
+		  	else {
 			File directory = new File(filePath);	  
 			File[] files = directory.listFiles(); 
 			
@@ -632,7 +634,8 @@ public class TypeFinder {
 				  }
 				  if (i.getName().endsWith(".java")) parse(readFile(currentFilePath));
 				  if (i.isDirectory()) parseDirectory(i.getAbsolutePath());
-			  	}	  
+			  	}	
+		  	}
 	  	}
 	  
 	  
