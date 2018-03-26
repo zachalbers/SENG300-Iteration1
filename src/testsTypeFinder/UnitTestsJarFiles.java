@@ -17,6 +17,18 @@ public class UnitTestsJarFiles {
 	 * The following tests are analogous to "UnitTestsSimpleNames" but for is testing jar files
 	 */
 	
+		/**
+	 * Test for correct declaration and reference count given the directory path is directly to a jar file for int
+	 */
+	@Test
+	public void testDirisJar() {
+	  String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testDir9" + File.separator + "testJarFile.jar", "int"};
+
+	  TypeFinder finder = new TypeFinder();
+	  finder.run(args);
+	  assertEquals("int. Declarations found: 0; references found: 1.", finder.outputString);
+	}
+	
 	
 	/**
 	 * Test for correct declaration and reference count given a Jar file for int 
