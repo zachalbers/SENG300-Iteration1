@@ -24,9 +24,10 @@ public class UnitTestsAllJavaTypes {
 	  List<String> correctOutput = new ArrayList<String>();
 	  correctOutput.add("anotherPack.AnotherClass. Declarations found: 1; references found: 0.");
 	  correctOutput.add("int. Declarations found: 0; references found: 1.");
+	  correctOutput.add("java.lang.Integer. Declarations found: 0; references found: 1.");
 	  correctOutput.add("java.lang.String. Declarations found: 0; references found: 1.");
+	  correctOutput.add("somePack.ArrayList. Declarations found: 0; references found: 2.");
 	  correctOutput.add("somePack.SomeClass. Declarations found: 1; references found: 1.");
-	  
 	  
 	  TypeFinder finder = new TypeFinder();
 	  finder.run(args);
@@ -34,4 +35,10 @@ public class UnitTestsAllJavaTypes {
 	  
 	}
 
+	
+	@Test
+	public void testParameterizedType() {
+		String[] args = {BASEDIR + "" + File.separator + "TestFiles" + File.separator + "testAllJavaTypes"};
+		
+	}
 }

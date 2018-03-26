@@ -65,6 +65,7 @@ public class UnitTestsQualifiedNames {
 	}
 
 
+	
 
 	/**
 	 * Tests that the correct output is given when the type is in multiple files, but packages are different.
@@ -144,5 +145,7 @@ public class UnitTestsQualifiedNames {
 	  
 	  assertEquals("Double. Declarations found: 0; references found: 3.", finder.outputString);
 	}
+	
+	
 
 }
