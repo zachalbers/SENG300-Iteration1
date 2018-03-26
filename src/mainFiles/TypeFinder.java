@@ -21,7 +21,7 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	
-	  boolean DEBUG = true;		// Prints out additional information for debugging purposes.
+	  boolean DEBUG = false;		// Prints out additional information for debugging purposes.
 
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
