@@ -15,7 +15,7 @@ Group:24
 
 Members:
    1)Andrew Jamison
-	 2)Bryan Lam
+	 2)Bryan Lam 10109024
 	 3)Zachariah Albers
      
    See git-log for information regarding commits. Further information can be found on https://github.com/zachalbers/SENG300-Iteration1 .
