@@ -21,7 +21,7 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	
-	  boolean DEBUG = false;		// Prints out additional information for debugging purposes.
+	  boolean DEBUG = true;		// Prints out additional information for debugging purposes.
 
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
@@ -438,16 +438,7 @@ public class TypeFinder {
 				public boolean visit(ImportDeclaration node) {
 					String name = node.getName().toString();
 					addToCount(name, 0, 1);
-//					String[] importParts = name.split("\\.");
-//					String[] typeParts = javaType.split("\\.");
-//					
-//						boolean match = true;
-//						for (int i = 0; i < typeParts.length; i ++) {
-//							if ((typeParts.length - i > 0 && importParts.length - i > 0)
-//									&& !(typeParts[typeParts.length - (1 + i)].equals(importParts[importParts.length - (1 + i)]))) 
-//									{ match = false;}
-//						}
-//						if (match) referenceCount++;
+
 
 					return super.visit(node);
 				}
@@ -572,24 +563,7 @@ public class TypeFinder {
 					}
 					return false;
 				}
-//				public boolean visit(ParameterizedType node) {
-//					String name;
-//					
-//					ITypeBinding nodeBinding = node.resolveBinding();
-//					nodeBinding.getQualifiedName();
-//					
-//					System.out.println(nodeBinding.getName());
-//					
-//					//if (nodeBinding.getTypeParameters() != null) {
-//						for (ITypeBinding i : nodeBinding.getTypeParameters()) {
-//							System.out.println(i.getQualifiedName());
-//							System.out.println("hello");
-//							
-//						}
-//
-//					
-//					return false;
-//				}
+
 				
 				
 				
@@ -599,6 +573,9 @@ public class TypeFinder {
 	  }
 	  
 	  public void addToCount(String typeName, int addDec, int addRef) {
+		  
+		  String[] parts = typeName.split("<");
+		  typeName = parts[0];
 		  
 		  List<Integer> currentCount = allTypes.get(typeName);
 		  if (currentCount  == null) {
