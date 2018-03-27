@@ -26,7 +26,7 @@ public class UnitTestsAllJavaTypes {
 	  List<String> correctOutput = new ArrayList<String>();
 	  correctOutput.add("anotherPack.AnotherClass. Declarations found: 1; references found: 0.");
 	  correctOutput.add("int. Declarations found: 0; references found: 1.");
-	  correctOutput.add("java.lang.Integer. Declarations found: 0; references found: 1.");
+	  correctOutput.add("java.lang.Integer. Declarations found: 0; references found: 2.");
 	  correctOutput.add("java.lang.String. Declarations found: 0; references found: 1.");
 	  correctOutput.add("somePack.ArrayList. Declarations found: 0; references found: 2.");
 	  correctOutput.add("somePack.SomeClass. Declarations found: 1; references found: 1.");
@@ -100,7 +100,7 @@ public class UnitTestsAllJavaTypes {
 	  List<String> correctOutput = new ArrayList<String>();
 	  correctOutput.add("int. Declarations found: 0; references found: 9.");
 	  correctOutput.add("java.io.IOException. Declarations found: 0; references found: 3.");
-	  correctOutput.add("java.lang.Integer. Declarations found: 0; references found: 1.");
+	  correctOutput.add("java.lang.Integer. Declarations found: 0; references found: 2.");
 	  correctOutput.add("java.lang.String. Declarations found: 0; references found: 2.");
 	  correctOutput.add("java.lang.String[]. Declarations found: 0; references found: 1.");
 	  correctOutput.add("package4.ArrayList. Declarations found: 0; references found: 2.");

@@ -495,12 +495,13 @@ public class TypeFinder {
 					String name;
 				
 					name = node.resolveTypeBinding().getQualifiedName();	
+					if (name.equals("")) name = node.getType().toString();
 					if (name.equals("")) name = node.resolveTypeBinding().getName();
 
 					addToCount(name, 0, 1);
 					if (DEBUG) System.out.println("Instance Variable Reference: " + name);
 					
-					return false; // do not continue 
+					return true; // do not continue 
 			}
 
 				
