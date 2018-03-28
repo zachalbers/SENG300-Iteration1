@@ -25,6 +25,7 @@ public class TypeFinder {
 
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
+	  int anonClassCount = 0;
 	  boolean containsPackage = false;	// DO NOT CHANGE
 	  boolean findAllTypes = false;
 	  String javaType = "";
@@ -495,8 +496,10 @@ public class TypeFinder {
 					String name;
 				
 					name = node.resolveTypeBinding().getQualifiedName();	
-					if (name.equals("")) name = node.getType().toString();
+					if (name.equals("")) name = node.getType().resolveBinding().getQualifiedName();
 					if (name.equals("")) name = node.resolveTypeBinding().getName();
+
+
 
 					addToCount(name, 0, 1);
 					if (DEBUG) System.out.println("Instance Variable Reference: " + name);
@@ -565,9 +568,12 @@ public class TypeFinder {
 					return false;
 				}
 				
-				public boolean visit(AnonymousClassDeclaration node) {
-
-				    //System.out.println(node.resolveBinding().getQualifiedName().toString());
+				public boolean visit(AnonymousClassDeclaration node) {		
+					String name;
+					
+					name = "AnonymousClass" + anonClassCount;
+					anonClassCount++;
+				    addToCount(name, 1, 0);
 
 				    return true;
 				}
