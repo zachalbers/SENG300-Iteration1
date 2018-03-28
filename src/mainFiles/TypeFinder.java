@@ -303,7 +303,7 @@ public class TypeFinder {
 					if (equalsType(name)) referenceCount++;
 					if (DEBUG) System.out.println("Instance Variable Reference: " + name);
 					
-					return false; // do not continue 
+					return true; // do not continue 
 			}
 
 				
@@ -563,6 +563,13 @@ public class TypeFinder {
 						if (DEBUG) System.out.println("Reference: "+ name);
 					}
 					return false;
+				}
+				
+				public boolean visit(AnonymousClassDeclaration node) {
+
+				    //System.out.println(node.resolveBinding().getQualifiedName().toString());
+
+				    return true;
 				}
 
 				
