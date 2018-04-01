@@ -384,7 +384,7 @@ public class TypeFinder {
 	  public void visitAllTypes(CompilationUnit cu) {
 		  cu.accept(new ASTVisitor() {
 				 
-			  	// RELOOK AT SUPERCLASSTYPE VS .GETTYPEDECLERATION
+			  	
 				public boolean visit(TypeDeclaration node) {
 					String name = node.getName().getFullyQualifiedName();
 
