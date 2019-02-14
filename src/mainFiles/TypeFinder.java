@@ -21,7 +21,7 @@ import org.eclipse.jdt.core.dom.*;
 
 public class TypeFinder {
 	
-	  boolean DEBUG = false;		// Prints out additional information for debugging purposes.
+	  boolean DEBUG = true;		// Prints out additional information for debugging purposes.
 
 	  int  referenceCount = 0;
 	  int  declerationCount = 0;
@@ -430,7 +430,7 @@ public class TypeFinder {
 					name = node.resolveBinding().getType().getQualifiedName();
 					if (name.equals("")) name = node.resolveBinding().getType().getName();
 					addToCount(name, 0, 1);
-					if (DEBUG) System.out.println("Variable Reference: " + name);
+					if (DEBUG) System.out.println("Variable Reference: " + name + "  " + node.resolveBinding().getType().isNested());
 	
 					return super.visit(node);
 				}
